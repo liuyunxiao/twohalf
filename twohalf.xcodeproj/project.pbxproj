@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E4F7A49418A8B1C500D85F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */; };
+		E4F7A49618A8B1C500D85F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49518A8B1C500D85F89 /* Foundation.framework */; };
+		E4F7A49818A8B1C500D85F89 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49718A8B1C500D85F89 /* OpenGLES.framework */; };
+		E4F7A49A18A8B1C500D85F89 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49918A8B1C500D85F89 /* QuartzCore.framework */; };
+		E4F7A49C18A8B1C500D85F89 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49B18A8B1C500D85F89 /* UIKit.framework */; };
+		E4F7A4A318A8B1C500D85F89 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4A118A8B1C500D85F89 /* InfoPlist.strings */; };
+		E4F7A4A518A8B1C500D85F89 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4A418A8B1C500D85F89 /* main.mm */; };
+		E4F7A4A918A8B1C500D85F89 /* OgreDemoApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4A818A8B1C500D85F89 /* OgreDemoApp.cpp */; };
+		E4F7A4AC18A8B1C500D85F89 /* OgreFramework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4AB18A8B1C500D85F89 /* OgreFramework.cpp */; };
+		E4F7A4F518A8B1C500D85F89 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4F418A8B1C500D85F89 /* ogre.cfg */; };
+		E4F7A4F718A8B1C500D85F89 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4F618A8B1C500D85F89 /* plugins.cfg */; };
+		E4F7A4F918A8B1C500D85F89 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4F818A8B1C500D85F89 /* resources.cfg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E4F7A49018A8B1C500D85F89 /* twohalf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twohalf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E4F7A49518A8B1C500D85F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E4F7A49718A8B1C500D85F89 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E4F7A49918A8B1C500D85F89 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E4F7A49B18A8B1C500D85F89 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E4F7A49F18A8B1C500D85F89 /* twohalf-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "twohalf-Prefix.pch"; sourceTree = "<group>"; };
+		E4F7A4A018A8B1C500D85F89 /* twohalf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "twohalf-Info.plist"; sourceTree = "<group>"; };
+		E4F7A4A218A8B1C500D85F89 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4F7A4A418A8B1C500D85F89 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		E4F7A4A718A8B1C500D85F89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E4F7A4A818A8B1C500D85F89 /* OgreDemoApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OgreDemoApp.cpp; sourceTree = "<group>"; };
+		E4F7A4AA18A8B1C500D85F89 /* OgreDemoApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OgreDemoApp.h; sourceTree = "<group>"; };
+		E4F7A4AB18A8B1C500D85F89 /* OgreFramework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OgreFramework.cpp; sourceTree = "<group>"; };
+		E4F7A4AD18A8B1C500D85F89 /* OgreFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OgreFramework.h; sourceTree = "<group>"; };
+		E4F7A4AE18A8B1C500D85F89 /* OgreStaticPluginLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OgreStaticPluginLoader.h; sourceTree = "<group>"; };
+		E4F7A4B318A8B1C500D85F89 /* Examples.material */ = {isa = PBXFileReference; lastKnownFileType = text; path = Examples.material; sourceTree = "<group>"; };
+		E4F7A4B418A8B1C500D85F89 /* Ogre.material */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ogre.material; sourceTree = "<group>"; };
+		E4F7A4B618A8B1C500D85F89 /* GreenSkin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GreenSkin.jpg; sourceTree = "<group>"; };
+		E4F7A4B718A8B1C500D85F89 /* spheremap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spheremap.png; sourceTree = "<group>"; };
+		E4F7A4B818A8B1C500D85F89 /* tusk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tusk.jpg; sourceTree = "<group>"; };
+		E4F7A4BA18A8B1C500D85F89 /* ogrehead.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = ogrehead.mesh; sourceTree = "<group>"; };
+		E4F7A4BC18A8B1C500D85F89 /* cubemap.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = cubemap.zip; sourceTree = "<group>"; };
+		E4F7A4BD18A8B1C500D85F89 /* cubemapsJS.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = cubemapsJS.zip; sourceTree = "<group>"; };
+		E4F7A4BE18A8B1C500D85F89 /* SdkTrays.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SdkTrays.zip; sourceTree = "<group>"; };
+		E4F7A4BF18A8B1C500D85F89 /* skybox.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = skybox.zip; sourceTree = "<group>"; };
+		E4F7A4C118A8B1C500D85F89 /* FFPLib_Common.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Common.cg; sourceTree = "<group>"; };
+		E4F7A4C218A8B1C500D85F89 /* FFPLib_Common.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Common.glsl; sourceTree = "<group>"; };
+		E4F7A4C318A8B1C500D85F89 /* FFPLib_Common.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Common.glsles; sourceTree = "<group>"; };
+		E4F7A4C418A8B1C500D85F89 /* FFPLib_Common.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Common.hlsl; sourceTree = "<group>"; };
+		E4F7A4C518A8B1C500D85F89 /* FFPLib_Fog.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Fog.cg; sourceTree = "<group>"; };
+		E4F7A4C618A8B1C500D85F89 /* FFPLib_Fog.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Fog.glsl; sourceTree = "<group>"; };
+		E4F7A4C718A8B1C500D85F89 /* FFPLib_Fog.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Fog.glsles; sourceTree = "<group>"; };
+		E4F7A4C818A8B1C500D85F89 /* FFPLib_Fog.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Fog.hlsl; sourceTree = "<group>"; };
+		E4F7A4C918A8B1C500D85F89 /* FFPLib_Lighting.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Lighting.cg; sourceTree = "<group>"; };
+		E4F7A4CA18A8B1C500D85F89 /* FFPLib_Lighting.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Lighting.glsl; sourceTree = "<group>"; };
+		E4F7A4CB18A8B1C500D85F89 /* FFPLib_Lighting.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Lighting.glsles; sourceTree = "<group>"; };
+		E4F7A4CC18A8B1C500D85F89 /* FFPLib_Lighting.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Lighting.hlsl; sourceTree = "<group>"; };
+		E4F7A4CD18A8B1C500D85F89 /* FFPLib_Texturing.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Texturing.cg; sourceTree = "<group>"; };
+		E4F7A4CE18A8B1C500D85F89 /* FFPLib_Texturing.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Texturing.glsl; sourceTree = "<group>"; };
+		E4F7A4CF18A8B1C500D85F89 /* FFPLib_Texturing.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Texturing.glsles; sourceTree = "<group>"; };
+		E4F7A4D018A8B1C500D85F89 /* FFPLib_Texturing.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Texturing.hlsl; sourceTree = "<group>"; };
+		E4F7A4D118A8B1C500D85F89 /* FFPLib_Transform.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Transform.cg; sourceTree = "<group>"; };
+		E4F7A4D218A8B1C500D85F89 /* FFPLib_Transform.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Transform.glsl; sourceTree = "<group>"; };
+		E4F7A4D318A8B1C500D85F89 /* FFPLib_Transform.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Transform.glsles; sourceTree = "<group>"; };
+		E4F7A4D418A8B1C500D85F89 /* FFPLib_Transform.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Transform.hlsl; sourceTree = "<group>"; };
+		E4F7A4D618A8B1C500D85F89 /* HardwareSkinningShadow.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = HardwareSkinningShadow.cg; sourceTree = "<group>"; };
+		E4F7A4D718A8B1C500D85F89 /* HardwareSkinningShadow.material */ = {isa = PBXFileReference; lastKnownFileType = text; path = HardwareSkinningShadow.material; sourceTree = "<group>"; };
+		E4F7A4D818A8B1C500D85F89 /* RTShaderSystem.material */ = {isa = PBXFileReference; lastKnownFileType = text; path = RTShaderSystem.material; sourceTree = "<group>"; };
+		E4F7A4D918A8B1C500D85F89 /* SampleLib_InstancedViewports.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_InstancedViewports.cg; sourceTree = "<group>"; };
+		E4F7A4DA18A8B1C500D85F89 /* SampleLib_InstancedViewports.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_InstancedViewports.glsl; sourceTree = "<group>"; };
+		E4F7A4DB18A8B1C500D85F89 /* SampleLib_InstancedViewports.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_InstancedViewports.hlsl; sourceTree = "<group>"; };
+		E4F7A4DC18A8B1C500D85F89 /* SampleLib_ReflectionMap.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_ReflectionMap.cg; sourceTree = "<group>"; };
+		E4F7A4DD18A8B1C500D85F89 /* SampleLib_ReflectionMap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_ReflectionMap.glsl; sourceTree = "<group>"; };
+		E4F7A4DE18A8B1C500D85F89 /* SampleLib_ReflectionMap.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_ReflectionMap.glsles; sourceTree = "<group>"; };
+		E4F7A4DF18A8B1C500D85F89 /* SampleLib_ReflectionMap.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SampleLib_ReflectionMap.hlsl; sourceTree = "<group>"; };
+		E4F7A4E018A8B1C500D85F89 /* SGXLib_IntegratedPSSM.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_IntegratedPSSM.cg; sourceTree = "<group>"; };
+		E4F7A4E118A8B1C500D85F89 /* SGXLib_IntegratedPSSM.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_IntegratedPSSM.glsl; sourceTree = "<group>"; };
+		E4F7A4E218A8B1C500D85F89 /* SGXLib_IntegratedPSSM.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_IntegratedPSSM.glsles; sourceTree = "<group>"; };
+		E4F7A4E318A8B1C500D85F89 /* SGXLib_IntegratedPSSM.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_IntegratedPSSM.hlsl; sourceTree = "<group>"; };
+		E4F7A4E418A8B1C500D85F89 /* SGXLib_LayeredBlending.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_LayeredBlending.cg; sourceTree = "<group>"; };
+		E4F7A4E518A8B1C500D85F89 /* SGXLib_LayeredBlending.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_LayeredBlending.glsl; sourceTree = "<group>"; };
+		E4F7A4E618A8B1C500D85F89 /* SGXLib_LayeredBlending.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_LayeredBlending.glsles; sourceTree = "<group>"; };
+		E4F7A4E718A8B1C500D85F89 /* SGXLib_LayeredBlending.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_LayeredBlending.hlsl; sourceTree = "<group>"; };
+		E4F7A4E818A8B1C500D85F89 /* SGXLib_NormalMapLighting.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_NormalMapLighting.cg; sourceTree = "<group>"; };
+		E4F7A4E918A8B1C500D85F89 /* SGXLib_NormalMapLighting.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_NormalMapLighting.glsl; sourceTree = "<group>"; };
+		E4F7A4EA18A8B1C500D85F89 /* SGXLib_NormalMapLighting.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_NormalMapLighting.glsles; sourceTree = "<group>"; };
+		E4F7A4EB18A8B1C500D85F89 /* SGXLib_NormalMapLighting.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_NormalMapLighting.hlsl; sourceTree = "<group>"; };
+		E4F7A4EC18A8B1C500D85F89 /* SGXLib_PerPixelLighting.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_PerPixelLighting.cg; sourceTree = "<group>"; };
+		E4F7A4ED18A8B1C500D85F89 /* SGXLib_PerPixelLighting.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_PerPixelLighting.glsl; sourceTree = "<group>"; };
+		E4F7A4EE18A8B1C500D85F89 /* SGXLib_PerPixelLighting.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_PerPixelLighting.glsles; sourceTree = "<group>"; };
+		E4F7A4EF18A8B1C500D85F89 /* SGXLib_PerPixelLighting.hlsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_PerPixelLighting.hlsl; sourceTree = "<group>"; };
+		E4F7A4F018A8B1C500D85F89 /* SGXLib_TextureAtlas.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_TextureAtlas.cg; sourceTree = "<group>"; };
+		E4F7A4F118A8B1C500D85F89 /* SGXLib_TextureAtlas.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_TextureAtlas.glsl; sourceTree = "<group>"; };
+		E4F7A4F218A8B1C500D85F89 /* SGXLib_TextureAtlas.glsles */ = {isa = PBXFileReference; lastKnownFileType = text; path = SGXLib_TextureAtlas.glsles; sourceTree = "<group>"; };
+		E4F7A4F318A8B1C500D85F89 /* SGXLib_TextureAtlas.hlsl */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SGXLib_TextureAtlas.hlsl; path = ..; sourceTree = "<group>"; };
+		E4F7A4F418A8B1C500D85F89 /* ogre.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = ogre.cfg; sourceTree = "<group>"; };
+		E4F7A4F618A8B1C500D85F89 /* plugins.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = plugins.cfg; sourceTree = "<group>"; };
+		E4F7A4F818A8B1C500D85F89 /* resources.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = resources.cfg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4F7A48C18A8B1C500D85F89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4F7A49A18A8B1C500D85F89 /* QuartzCore.framework in Frameworks */,
+				E4F7A49418A8B1C500D85F89 /* CoreGraphics.framework in Frameworks */,
+				E4F7A49618A8B1C500D85F89 /* Foundation.framework in Frameworks */,
+				E4F7A49818A8B1C500D85F89 /* OpenGLES.framework in Frameworks */,
+				E4F7A49C18A8B1C500D85F89 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E4F7A48618A8B1C500D85F89 = {
+			isa = PBXGroup;
+			children = (
+				E4F7A49D18A8B1C500D85F89 /* twohalf */,
+				E4F7A49218A8B1C500D85F89 /* Frameworks */,
+				E4F7A49118A8B1C500D85F89 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E4F7A49118A8B1C500D85F89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A49018A8B1C500D85F89 /* twohalf.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E4F7A49218A8B1C500D85F89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */,
+				E4F7A49518A8B1C500D85F89 /* Foundation.framework */,
+				E4F7A49718A8B1C500D85F89 /* OpenGLES.framework */,
+				E4F7A49918A8B1C500D85F89 /* QuartzCore.framework */,
+				E4F7A49B18A8B1C500D85F89 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4F7A49D18A8B1C500D85F89 /* twohalf */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4A118A8B1C500D85F89 /* InfoPlist.strings */,
+				E4F7A4A418A8B1C500D85F89 /* main.mm */,
+				E4F7A4A618A8B1C500D85F89 /* Basic Ogre Framework */,
+				E4F7A4AF18A8B1C500D85F89 /* Resources */,
+				E4F7A49E18A8B1C500D85F89 /* Supporting Files */,
+			);
+			path = twohalf;
+			sourceTree = "<group>";
+		};
+		E4F7A49E18A8B1C500D85F89 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A49F18A8B1C500D85F89 /* twohalf-Prefix.pch */,
+				E4F7A4A018A8B1C500D85F89 /* twohalf-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E4F7A4A618A8B1C500D85F89 /* Basic Ogre Framework */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4A718A8B1C500D85F89 /* AppDelegate.h */,
+				E4F7A4A818A8B1C500D85F89 /* OgreDemoApp.cpp */,
+				E4F7A4AA18A8B1C500D85F89 /* OgreDemoApp.h */,
+				E4F7A4AB18A8B1C500D85F89 /* OgreFramework.cpp */,
+				E4F7A4AD18A8B1C500D85F89 /* OgreFramework.h */,
+				E4F7A4AE18A8B1C500D85F89 /* OgreStaticPluginLoader.h */,
+			);
+			name = "Basic Ogre Framework";
+			sourceTree = "<group>";
+		};
+		E4F7A4AF18A8B1C500D85F89 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4F418A8B1C500D85F89 /* ogre.cfg */,
+				E4F7A4F618A8B1C500D85F89 /* plugins.cfg */,
+				E4F7A4F818A8B1C500D85F89 /* resources.cfg */,
+				E4F7A4B018A8B1C500D85F89 /* media */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E4F7A4B018A8B1C500D85F89 /* media */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4B118A8B1C500D85F89 /* materials */,
+				E4F7A4B918A8B1C500D85F89 /* models */,
+				E4F7A4BB18A8B1C500D85F89 /* packs */,
+				E4F7A4C018A8B1C500D85F89 /* RTShaderLib */,
+			);
+			path = media;
+			sourceTree = "<group>";
+		};
+		E4F7A4B118A8B1C500D85F89 /* materials */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4B218A8B1C500D85F89 /* scripts */,
+				E4F7A4B518A8B1C500D85F89 /* textures */,
+			);
+			path = materials;
+			sourceTree = "<group>";
+		};
+		E4F7A4B218A8B1C500D85F89 /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4B318A8B1C500D85F89 /* Examples.material */,
+				E4F7A4B418A8B1C500D85F89 /* Ogre.material */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
+		E4F7A4B518A8B1C500D85F89 /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4B618A8B1C500D85F89 /* GreenSkin.jpg */,
+				E4F7A4B718A8B1C500D85F89 /* spheremap.png */,
+				E4F7A4B818A8B1C500D85F89 /* tusk.jpg */,
+			);
+			path = textures;
+			sourceTree = "<group>";
+		};
+		E4F7A4B918A8B1C500D85F89 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4BA18A8B1C500D85F89 /* ogrehead.mesh */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E4F7A4BB18A8B1C500D85F89 /* packs */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4BC18A8B1C500D85F89 /* cubemap.zip */,
+				E4F7A4BD18A8B1C500D85F89 /* cubemapsJS.zip */,
+				E4F7A4BE18A8B1C500D85F89 /* SdkTrays.zip */,
+				E4F7A4BF18A8B1C500D85F89 /* skybox.zip */,
+			);
+			path = packs;
+			sourceTree = "<group>";
+		};
+		E4F7A4C018A8B1C500D85F89 /* RTShaderLib */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4C118A8B1C500D85F89 /* FFPLib_Common.cg */,
+				E4F7A4C218A8B1C500D85F89 /* FFPLib_Common.glsl */,
+				E4F7A4C318A8B1C500D85F89 /* FFPLib_Common.glsles */,
+				E4F7A4C418A8B1C500D85F89 /* FFPLib_Common.hlsl */,
+				E4F7A4C518A8B1C500D85F89 /* FFPLib_Fog.cg */,
+				E4F7A4C618A8B1C500D85F89 /* FFPLib_Fog.glsl */,
+				E4F7A4C718A8B1C500D85F89 /* FFPLib_Fog.glsles */,
+				E4F7A4C818A8B1C500D85F89 /* FFPLib_Fog.hlsl */,
+				E4F7A4C918A8B1C500D85F89 /* FFPLib_Lighting.cg */,
+				E4F7A4CA18A8B1C500D85F89 /* FFPLib_Lighting.glsl */,
+				E4F7A4CB18A8B1C500D85F89 /* FFPLib_Lighting.glsles */,
+				E4F7A4CC18A8B1C500D85F89 /* FFPLib_Lighting.hlsl */,
+				E4F7A4CD18A8B1C500D85F89 /* FFPLib_Texturing.cg */,
+				E4F7A4CE18A8B1C500D85F89 /* FFPLib_Texturing.glsl */,
+				E4F7A4CF18A8B1C500D85F89 /* FFPLib_Texturing.glsles */,
+				E4F7A4D018A8B1C500D85F89 /* FFPLib_Texturing.hlsl */,
+				E4F7A4D118A8B1C500D85F89 /* FFPLib_Transform.cg */,
+				E4F7A4D218A8B1C500D85F89 /* FFPLib_Transform.glsl */,
+				E4F7A4D318A8B1C500D85F89 /* FFPLib_Transform.glsles */,
+				E4F7A4D418A8B1C500D85F89 /* FFPLib_Transform.hlsl */,
+				E4F7A4D518A8B1C500D85F89 /* materials */,
+				E4F7A4D918A8B1C500D85F89 /* SampleLib_InstancedViewports.cg */,
+				E4F7A4DA18A8B1C500D85F89 /* SampleLib_InstancedViewports.glsl */,
+				E4F7A4DB18A8B1C500D85F89 /* SampleLib_InstancedViewports.hlsl */,
+				E4F7A4DC18A8B1C500D85F89 /* SampleLib_ReflectionMap.cg */,
+				E4F7A4DD18A8B1C500D85F89 /* SampleLib_ReflectionMap.glsl */,
+				E4F7A4DE18A8B1C500D85F89 /* SampleLib_ReflectionMap.glsles */,
+				E4F7A4DF18A8B1C500D85F89 /* SampleLib_ReflectionMap.hlsl */,
+				E4F7A4E018A8B1C500D85F89 /* SGXLib_IntegratedPSSM.cg */,
+				E4F7A4E118A8B1C500D85F89 /* SGXLib_IntegratedPSSM.glsl */,
+				E4F7A4E218A8B1C500D85F89 /* SGXLib_IntegratedPSSM.glsles */,
+				E4F7A4E318A8B1C500D85F89 /* SGXLib_IntegratedPSSM.hlsl */,
+				E4F7A4E418A8B1C500D85F89 /* SGXLib_LayeredBlending.cg */,
+				E4F7A4E518A8B1C500D85F89 /* SGXLib_LayeredBlending.glsl */,
+				E4F7A4E618A8B1C500D85F89 /* SGXLib_LayeredBlending.glsles */,
+				E4F7A4E718A8B1C500D85F89 /* SGXLib_LayeredBlending.hlsl */,
+				E4F7A4E818A8B1C500D85F89 /* SGXLib_NormalMapLighting.cg */,
+				E4F7A4E918A8B1C500D85F89 /* SGXLib_NormalMapLighting.glsl */,
+				E4F7A4EA18A8B1C500D85F89 /* SGXLib_NormalMapLighting.glsles */,
+				E4F7A4EB18A8B1C500D85F89 /* SGXLib_NormalMapLighting.hlsl */,
+				E4F7A4EC18A8B1C500D85F89 /* SGXLib_PerPixelLighting.cg */,
+				E4F7A4ED18A8B1C500D85F89 /* SGXLib_PerPixelLighting.glsl */,
+				E4F7A4EE18A8B1C500D85F89 /* SGXLib_PerPixelLighting.glsles */,
+				E4F7A4EF18A8B1C500D85F89 /* SGXLib_PerPixelLighting.hlsl */,
+				E4F7A4F018A8B1C500D85F89 /* SGXLib_TextureAtlas.cg */,
+				E4F7A4F118A8B1C500D85F89 /* SGXLib_TextureAtlas.glsl */,
+				E4F7A4F218A8B1C500D85F89 /* SGXLib_TextureAtlas.glsles */,
+				E4F7A4F318A8B1C500D85F89 /* SGXLib_TextureAtlas.hlsl */,
+			);
+			path = RTShaderLib;
+			sourceTree = "<group>";
+		};
+		E4F7A4D518A8B1C500D85F89 /* materials */ = {
+			isa = PBXGroup;
+			children = (
+				E4F7A4D618A8B1C500D85F89 /* HardwareSkinningShadow.cg */,
+				E4F7A4D718A8B1C500D85F89 /* HardwareSkinningShadow.material */,
+				E4F7A4D818A8B1C500D85F89 /* RTShaderSystem.material */,
+			);
+			path = materials;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4F7A48F18A8B1C500D85F89 /* twohalf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4F7A4FC18A8B1C500D85F89 /* Build configuration list for PBXNativeTarget "twohalf" */;
+			buildPhases = (
+				E4F7A48B18A8B1C500D85F89 /* Sources */,
+				E4F7A48C18A8B1C500D85F89 /* Frameworks */,
+				E4F7A48D18A8B1C500D85F89 /* Resources */,
+				E4F7A48E18A8B1C500D85F89 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = twohalf;
+			productName = twohalf;
+			productReference = E4F7A49018A8B1C500D85F89 /* twohalf.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4F7A48718A8B1C500D85F89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = E4F7A48A18A8B1C500D85F89 /* Build configuration list for PBXProject "twohalf" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E4F7A48618A8B1C500D85F89;
+			productRefGroup = E4F7A49118A8B1C500D85F89 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4F7A48F18A8B1C500D85F89 /* twohalf */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E4F7A48D18A8B1C500D85F89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4F7A4A318A8B1C500D85F89 /* InfoPlist.strings in Resources */,
+				E4F7A4F518A8B1C500D85F89 /* ogre.cfg in Resources */,
+				E4F7A4F918A8B1C500D85F89 /* resources.cfg in Resources */,
+				E4F7A4F718A8B1C500D85F89 /* plugins.cfg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4F7A48E18A8B1C500D85F89 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "# This shell script simply copies resources into their respective locations\nditto \"$PROJECT_DIR/$PROJECT_NAME/media/\" \"$BUILT_PRODUCTS_DIR/twohalf.app/media/\"\nditto $PROJECT_DIR/$PROJECT_NAME/*.cfg \"$BUILT_PRODUCTS_DIR/twohalf.app/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4F7A48B18A8B1C500D85F89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4F7A4AC18A8B1C500D85F89 /* OgreFramework.cpp in Sources */,
+				E4F7A4A518A8B1C500D85F89 /* main.mm in Sources */,
+				E4F7A4A918A8B1C500D85F89 /* OgreDemoApp.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E4F7A4A118A8B1C500D85F89 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4F7A4A218A8B1C500D85F89 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E4F7A4FA18A8B1C500D85F89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = No;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "twohalf/twohalf-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = No;
+				GCC_THUMB_SUPPORT = "";
+				INFOPLIST_FILE = "twohalf/twohalf-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(OGRE_SDK_ROOT)/lib/Release\"",
+					"\"$(OGRE_SDK_ROOT)/iOSDependencies/lib/release\"",
+					"\"$(OGRE_SDK_ROOT)/iOSDependencies/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4F7A4FB18A8B1C500D85F89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_INLINES_ARE_PRIVATE_EXTERN = No;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "twohalf/twohalf-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = No;
+				GCC_THUMB_SUPPORT = "";
+				INFOPLIST_FILE = "twohalf/twohalf-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(OGRE_SDK_ROOT)/lib/Release\"",
+					"\"$(OGRE_SDK_ROOT)/iOSDependencies/lib/release\"",
+					"\"$(OGRE_SDK_ROOT)/iOSDependencies/lib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E4F7A4FD18A8B1C500D85F89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/sdk/include/OGRE\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/RenderSystems/GLES2\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/Overlay\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/RTShaderSystem\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/iOS\"",
+					"\"$(SRCROOT)/sdk/include\"",
+					"\"$(SRCROOT)/sdk/include/OIS\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/include\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/sdk/lib/Debug\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/lib/Debug\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/lib\"",
+				);
+				OTHER_CFLAGS = "-DOGRE_USE_GLES2=1";
+				OTHER_LDFLAGS = (
+					"-lOIS",
+					"-lOgreMainStatic",
+					"-lRenderSystem_GLES2Static",
+					"-lOgreRTShaderSystemStatic",
+					"-lglsl_optimizer",
+					"-lboost_system",
+					"-lboost_chrono",
+					"-lboost_date_time",
+					"-lboost_atomic",
+					"-lboost_thread",
+					"-lFreeType",
+					"-lFreeImage",
+					"-lzzip",
+					"-lz",
+				);
+			};
+			name = Debug;
+		};
+		E4F7A4FE18A8B1C500D85F89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/sdk/include/OGRE\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/RenderSystems/GLES2\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/Overlay\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/RTShaderSystem\"",
+					"\"$(SRCROOT)/sdk/include/OGRE/iOS\"",
+					"\"$(SRCROOT)/sdk/include\"",
+					"\"$(SRCROOT)/sdk/include/OIS\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/include\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/sdk/lib/Release\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/lib/release\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/lib\"",
+				);
+				OTHER_CFLAGS = "-DOGRE_USE_GLES2=1";
+				OTHER_LDFLAGS = (
+					"-lOIS",
+					"-lOgreMainStatic",
+					"-lRenderSystem_GLES2Static",
+					"-lOgreRTShaderSystemStatic",
+					"-lglsl_optimizer",
+					"-lboost_system",
+					"-lboost_chrono",
+					"-lboost_date_time",
+					"-lboost_atomic",
+					"-lboost_thread",
+					"-lFreeType",
+					"-lFreeImage",
+					"-lzzip",
+					"-lz",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4F7A48A18A8B1C500D85F89 /* Build configuration list for PBXProject "twohalf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F7A4FA18A8B1C500D85F89 /* Debug */,
+				E4F7A4FB18A8B1C500D85F89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4F7A4FC18A8B1C500D85F89 /* Build configuration list for PBXNativeTarget "twohalf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4F7A4FD18A8B1C500D85F89 /* Debug */,
+				E4F7A4FE18A8B1C500D85F89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4F7A48718A8B1C500D85F89 /* Project object */;
+}
