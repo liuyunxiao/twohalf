@@ -21,7 +21,6 @@
     UITouch* touch = [touches anyObject];
     CGPoint pos = [touch locationInView:self];
     CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x,pos.y));
-    
     return [super touchesBegan:touches withEvent:event];
 }
 @end

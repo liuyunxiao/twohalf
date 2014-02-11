@@ -12,6 +12,8 @@
 template<> CanvasManager* Singleton<CanvasManager>::msSingleton = 0;
 bool CanvasManager::initMgr()
 {
+    FrameManager::getSingletonPtr()->addToMainView("MainView");
+    
     FrameManager::getSingletonPtr()->addToMainView("TopView");
     
     openModel("ogrehead.mesh");
@@ -37,14 +39,21 @@ bool CanvasManager::openModel(String name)
 
 void CanvasManager::onClickModel(Vector2 pos)
 {
+    printf("%f  %f",pos.x,pos.y);
     Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(pos.x, pos.y);
     mCursorQuery->setRay(ray);
     RaySceneQueryResult& result = mCursorQuery->execute();
     
     if (!result.empty())
     {
+        printf("fjkldsj111");
         // using the point of intersection, find the corresponding texel on our texture
         Vector3 pt = ray.getPoint(result.back().distance);
+        MovableObject* ent = result[0].movable;
+        if(ent)
+        {
+            printf("fjkldsj");
+        }
         //mBrushPos = (Vector2(pt.x, -pt.y) / mPlaneSize + Vector2(0.5, 0.5)) * TEXTURE_SIZE;
     }
 }
