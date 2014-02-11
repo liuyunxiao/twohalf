@@ -1,6 +1,5 @@
 #include "OgreFramework.h"
 #include "macUtils.h"
-#include "FrameManager.h"
 template<> OgreFramework* Singleton<OgreFramework>::msSingleton = 0;
 
 
@@ -101,7 +100,7 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
     
 	m_pRenderWnd->setActive(true);
     
-    FrameManager::getSingletonPtr()->addToMainView("TopView");
+    
     
 	return true;
 }

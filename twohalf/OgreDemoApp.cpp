@@ -1,9 +1,8 @@
 #include "OgreDemoApp.h"
-
+#include "CanvasManager.h"
+#include "FrameManager.h"
 DemoApp::DemoApp()
 {
-	m_pCubeNode		= 0;
-	m_pCubeEntity   = 0;
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
@@ -156,9 +155,17 @@ void DemoApp::setupDemoScene()
     
 	OgreFramework::getSingletonPtr()->m_pSceneMgr->createLight("Light")->setPosition(75,75,75);
     
-	m_pCubeEntity = OgreFramework::getSingletonPtr()->m_pSceneMgr->createEntity("Cube", "ogrehead.mesh");
-	m_pCubeNode = OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->createChildSceneNode("CubeNode");
-	m_pCubeNode->attachObject(m_pCubeEntity);
+    new FrameManager();
+    if(!FrameManager::getSingletonPtr()->initMgr())
+    {
+        
+    }
+    
+    new CanvasManager();
+    if(!CanvasManager::getSingletonPtr()->initMgr())
+    {
+        
+    }
 }
 
 //|||||||||||||||||||||||||||||||||||||||||||||||

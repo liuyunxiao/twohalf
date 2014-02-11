@@ -9,6 +9,14 @@
 #ifndef __twohalf__CanvasManager__
 #define __twohalf__CanvasManager__
 
-#include <iostream>
-
+class CanvasManager : public Singleton<CanvasManager>
+{
+public:
+    bool initMgr();
+    
+    bool openModel(String name);
+private:
+    SceneNode*          mpCurOpenNode;
+    Entity*             mpCurOpenEnt;
+};
 #endif /* defined(__twohalf__CanvasManager__) */

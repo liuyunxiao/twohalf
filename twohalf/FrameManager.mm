@@ -13,6 +13,7 @@ template<> FrameManager* Singleton<FrameManager>::msSingleton = 0;
 
 bool FrameManager::initMgr()
 {
+    return true;
 }
 
 bool FrameManager::addToMainView(String frameName)
@@ -30,4 +31,6 @@ bool FrameManager::addToMainView(String frameName)
     OgreFramework::getSingletonPtr()->m_pRenderWnd->getCustomAttribute("VIEW", &pView);
     if(pView)
         [pView addSubview:v];
+    
+    return true;
 }

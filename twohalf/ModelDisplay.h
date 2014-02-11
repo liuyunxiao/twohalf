@@ -12,6 +12,7 @@
 }
 -(void)onUpdate;
 @end
+
 @interface ModelDisplay : UIView
 {
     IBOutlet UIScrollView*      mScrollModels;

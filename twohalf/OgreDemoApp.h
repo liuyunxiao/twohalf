@@ -91,9 +91,6 @@ private:
 	void runDemo();
     bool initialiseRTShaderSystem(SceneManager* sceneMgr);
     void destroyRTShaderSystem();
-
-	SceneNode*			m_pCubeNode;
-	Entity*				m_pCubeEntity;
     
 	bool					m_bShutdown;
 #ifdef INCLUDE_RTSHADER_SYSTEM

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E41F06F118A9D50800472A1D /* ModelDisplay.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41F06F018A9D50800472A1D /* ModelDisplay.xib */; };
+		E41F06F318A9D5B600472A1D /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41F06F218A9D5B600472A1D /* TopView.xib */; };
+		E41F06F618A9D61600472A1D /* TopView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F06F418A9D61600472A1D /* TopView.mm */; };
+		E41F06F918A9D6A600472A1D /* FrameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F06F718A9D6A600472A1D /* FrameManager.mm */; };
+		E41F06FC18A9E84100472A1D /* ModelDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F06FB18A9E84100472A1D /* ModelDisplay.mm */; };
+		E41F06FE18A9E93200472A1D /* UIModelItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41F06FD18A9E93200472A1D /* UIModelItem.xib */; };
+		E41F070118A9EB7000472A1D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41F070018A9EB7000472A1D /* Default-568h@2x.png */; };
+		E41F070418A9ED3D00472A1D /* ModelList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E41F070318A9ED3D00472A1D /* ModelList.plist */; };
+		E41F070718A9F04800472A1D /* CanvasManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E41F070518A9F04800472A1D /* CanvasManager.cpp */; };
 		E4F7A49418A8B1C500D85F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */; };
 		E4F7A49618A8B1C500D85F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49518A8B1C500D85F89 /* Foundation.framework */; };
 		E4F7A49818A8B1C500D85F89 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49718A8B1C500D85F89 /* OpenGLES.framework */; };
@@ -15,13 +24,26 @@
 		E4F7A4A318A8B1C500D85F89 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4A118A8B1C500D85F89 /* InfoPlist.strings */; };
 		E4F7A4A518A8B1C500D85F89 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4A418A8B1C500D85F89 /* main.mm */; };
 		E4F7A4A918A8B1C500D85F89 /* OgreDemoApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4A818A8B1C500D85F89 /* OgreDemoApp.cpp */; };
-		E4F7A4AC18A8B1C500D85F89 /* OgreFramework.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4AB18A8B1C500D85F89 /* OgreFramework.cpp */; };
+		E4F7A4AC18A8B1C500D85F89 /* OgreFramework.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4F7A4AB18A8B1C500D85F89 /* OgreFramework.mm */; };
 		E4F7A4F518A8B1C500D85F89 /* ogre.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4F418A8B1C500D85F89 /* ogre.cfg */; };
 		E4F7A4F718A8B1C500D85F89 /* plugins.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4F618A8B1C500D85F89 /* plugins.cfg */; };
 		E4F7A4F918A8B1C500D85F89 /* resources.cfg in Resources */ = {isa = PBXBuildFile; fileRef = E4F7A4F818A8B1C500D85F89 /* resources.cfg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E41F06F018A9D50800472A1D /* ModelDisplay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModelDisplay.xib; sourceTree = "<group>"; };
+		E41F06F218A9D5B600472A1D /* TopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
+		E41F06F418A9D61600472A1D /* TopView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TopView.mm; sourceTree = "<group>"; };
+		E41F06F518A9D61600472A1D /* TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopView.h; sourceTree = "<group>"; };
+		E41F06F718A9D6A600472A1D /* FrameManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FrameManager.mm; sourceTree = "<group>"; };
+		E41F06F818A9D6A600472A1D /* FrameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrameManager.h; sourceTree = "<group>"; };
+		E41F06FA18A9E84100472A1D /* ModelDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelDisplay.h; sourceTree = "<group>"; };
+		E41F06FB18A9E84100472A1D /* ModelDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModelDisplay.mm; sourceTree = "<group>"; };
+		E41F06FD18A9E93200472A1D /* UIModelItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIModelItem.xib; sourceTree = "<group>"; };
+		E41F070018A9EB7000472A1D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E41F070318A9ED3D00472A1D /* ModelList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ModelList.plist; sourceTree = "<group>"; };
+		E41F070518A9F04800472A1D /* CanvasManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CanvasManager.cpp; sourceTree = "<group>"; };
+		E41F070618A9F04800472A1D /* CanvasManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasManager.h; sourceTree = "<group>"; };
 		E4F7A49018A8B1C500D85F89 /* twohalf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twohalf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4F7A49518A8B1C500D85F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -35,7 +57,7 @@
 		E4F7A4A718A8B1C500D85F89 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4F7A4A818A8B1C500D85F89 /* OgreDemoApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OgreDemoApp.cpp; sourceTree = "<group>"; };
 		E4F7A4AA18A8B1C500D85F89 /* OgreDemoApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OgreDemoApp.h; sourceTree = "<group>"; };
-		E4F7A4AB18A8B1C500D85F89 /* OgreFramework.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OgreFramework.cpp; sourceTree = "<group>"; };
+		E4F7A4AB18A8B1C500D85F89 /* OgreFramework.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OgreFramework.mm; sourceTree = "<group>"; };
 		E4F7A4AD18A8B1C500D85F89 /* OgreFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OgreFramework.h; sourceTree = "<group>"; };
 		E4F7A4AE18A8B1C500D85F89 /* OgreStaticPluginLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OgreStaticPluginLoader.h; sourceTree = "<group>"; };
 		E4F7A4B318A8B1C500D85F89 /* Examples.material */ = {isa = PBXFileReference; lastKnownFileType = text; path = Examples.material; sourceTree = "<group>"; };
@@ -46,7 +68,6 @@
 		E4F7A4BA18A8B1C500D85F89 /* ogrehead.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = ogrehead.mesh; sourceTree = "<group>"; };
 		E4F7A4BC18A8B1C500D85F89 /* cubemap.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = cubemap.zip; sourceTree = "<group>"; };
 		E4F7A4BD18A8B1C500D85F89 /* cubemapsJS.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = cubemapsJS.zip; sourceTree = "<group>"; };
-		E4F7A4BE18A8B1C500D85F89 /* SdkTrays.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = SdkTrays.zip; sourceTree = "<group>"; };
 		E4F7A4BF18A8B1C500D85F89 /* skybox.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = skybox.zip; sourceTree = "<group>"; };
 		E4F7A4C118A8B1C500D85F89 /* FFPLib_Common.cg */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Common.cg; sourceTree = "<group>"; };
 		E4F7A4C218A8B1C500D85F89 /* FFPLib_Common.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FFPLib_Common.glsl; sourceTree = "<group>"; };
@@ -119,6 +140,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E41F06E418A9CFD700472A1D /* nib */ = {
+			isa = PBXGroup;
+			children = (
+				E41F06F018A9D50800472A1D /* ModelDisplay.xib */,
+				E41F06F218A9D5B600472A1D /* TopView.xib */,
+				E41F06FD18A9E93200472A1D /* UIModelItem.xib */,
+			);
+			path = nib;
+			sourceTree = "<group>";
+		};
+		E41F06EA18A9D20100472A1D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E41F06FA18A9E84100472A1D /* ModelDisplay.h */,
+				E41F06FB18A9E84100472A1D /* ModelDisplay.mm */,
+				E41F06F418A9D61600472A1D /* TopView.mm */,
+				E41F06F518A9D61600472A1D /* TopView.h */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E41F06FF18A9EB6400472A1D /* res */ = {
+			isa = PBXGroup;
+			children = (
+				E41F070018A9EB7000472A1D /* Default-568h@2x.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		E41F070218A9ED0500472A1D /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				E41F070318A9ED3D00472A1D /* ModelList.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
 		E4F7A48618A8B1C500D85F89 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +209,7 @@
 		E4F7A49D18A8B1C500D85F89 /* twohalf */ = {
 			isa = PBXGroup;
 			children = (
+				E41F06EA18A9D20100472A1D /* View */,
 				E4F7A4A118A8B1C500D85F89 /* InfoPlist.strings */,
 				E4F7A4A418A8B1C500D85F89 /* main.mm */,
 				E4F7A4A618A8B1C500D85F89 /* Basic Ogre Framework */,
@@ -175,9 +234,13 @@
 				E4F7A4A718A8B1C500D85F89 /* AppDelegate.h */,
 				E4F7A4A818A8B1C500D85F89 /* OgreDemoApp.cpp */,
 				E4F7A4AA18A8B1C500D85F89 /* OgreDemoApp.h */,
-				E4F7A4AB18A8B1C500D85F89 /* OgreFramework.cpp */,
+				E4F7A4AB18A8B1C500D85F89 /* OgreFramework.mm */,
 				E4F7A4AD18A8B1C500D85F89 /* OgreFramework.h */,
 				E4F7A4AE18A8B1C500D85F89 /* OgreStaticPluginLoader.h */,
+				E41F06F718A9D6A600472A1D /* FrameManager.mm */,
+				E41F06F818A9D6A600472A1D /* FrameManager.h */,
+				E41F070518A9F04800472A1D /* CanvasManager.cpp */,
+				E41F070618A9F04800472A1D /* CanvasManager.h */,
 			);
 			name = "Basic Ogre Framework";
 			sourceTree = "<group>";
@@ -185,6 +248,9 @@
 		E4F7A4AF18A8B1C500D85F89 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E41F070218A9ED0500472A1D /* plist */,
+				E41F06FF18A9EB6400472A1D /* res */,
+				E41F06E418A9CFD700472A1D /* nib */,
 				E4F7A4F418A8B1C500D85F89 /* ogre.cfg */,
 				E4F7A4F618A8B1C500D85F89 /* plugins.cfg */,
 				E4F7A4F818A8B1C500D85F89 /* resources.cfg */,
@@ -245,7 +311,6 @@
 			children = (
 				E4F7A4BC18A8B1C500D85F89 /* cubemap.zip */,
 				E4F7A4BD18A8B1C500D85F89 /* cubemapsJS.zip */,
-				E4F7A4BE18A8B1C500D85F89 /* SdkTrays.zip */,
 				E4F7A4BF18A8B1C500D85F89 /* skybox.zip */,
 			);
 			path = packs;
@@ -367,8 +432,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41F06FE18A9E93200472A1D /* UIModelItem.xib in Resources */,
+				E41F06F318A9D5B600472A1D /* TopView.xib in Resources */,
 				E4F7A4A318A8B1C500D85F89 /* InfoPlist.strings in Resources */,
 				E4F7A4F518A8B1C500D85F89 /* ogre.cfg in Resources */,
+				E41F06F118A9D50800472A1D /* ModelDisplay.xib in Resources */,
+				E41F070118A9EB7000472A1D /* Default-568h@2x.png in Resources */,
+				E41F070418A9ED3D00472A1D /* ModelList.plist in Resources */,
 				E4F7A4F918A8B1C500D85F89 /* resources.cfg in Resources */,
 				E4F7A4F718A8B1C500D85F89 /* plugins.cfg in Resources */,
 			);
@@ -397,9 +467,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4F7A4AC18A8B1C500D85F89 /* OgreFramework.cpp in Sources */,
+				E4F7A4AC18A8B1C500D85F89 /* OgreFramework.mm in Sources */,
 				E4F7A4A518A8B1C500D85F89 /* main.mm in Sources */,
+				E41F06FC18A9E84100472A1D /* ModelDisplay.mm in Sources */,
 				E4F7A4A918A8B1C500D85F89 /* OgreDemoApp.cpp in Sources */,
+				E41F06F618A9D61600472A1D /* TopView.mm in Sources */,
+				E41F06F918A9D6A600472A1D /* FrameManager.mm in Sources */,
+				E41F070718A9F04800472A1D /* CanvasManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,18 +559,16 @@
 					"\"$(SRCROOT)/sdk/include/OGRE/RTShaderSystem\"",
 					"\"$(SRCROOT)/sdk/include/OGRE/iOS\"",
 					"\"$(SRCROOT)/sdk/include\"",
-					"\"$(SRCROOT)/sdk/include/OIS\"",
 					"\"$(SRCROOT)/sdk/iOSDependencies/include\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/sdk/lib/Debug\"",
-					"\"$(SRCROOT)/sdk/iOSDependencies/lib/Debug\"",
+					"\"$(SRCROOT)/sdk/lib/Release\"",
+					"\"$(SRCROOT)/sdk/iOSDependencies/lib/release\"",
 					"\"$(SRCROOT)/sdk/iOSDependencies/lib\"",
 				);
 				OTHER_CFLAGS = "-DOGRE_USE_GLES2=1";
 				OTHER_LDFLAGS = (
-					"-lOIS",
 					"-lOgreMainStatic",
 					"-lRenderSystem_GLES2Static",
 					"-lOgreRTShaderSystemStatic",
@@ -527,7 +599,6 @@
 					"\"$(SRCROOT)/sdk/include/OGRE/RTShaderSystem\"",
 					"\"$(SRCROOT)/sdk/include/OGRE/iOS\"",
 					"\"$(SRCROOT)/sdk/include\"",
-					"\"$(SRCROOT)/sdk/include/OIS\"",
 					"\"$(SRCROOT)/sdk/iOSDependencies/include\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -538,7 +609,6 @@
 				);
 				OTHER_CFLAGS = "-DOGRE_USE_GLES2=1";
 				OTHER_LDFLAGS = (
-					"-lOIS",
 					"-lOgreMainStatic",
 					"-lRenderSystem_GLES2Static",
 					"-lOgreRTShaderSystemStatic",
