@@ -15,8 +15,11 @@ public:
     bool initMgr();
     
     bool openModel(String name);
+    
+    void onClickModel(Vector2 pos);
 private:
     SceneNode*          mpCurOpenNode;
     Entity*             mpCurOpenEnt;
+    RaySceneQuery*      mCursorQuery;
 };
 #endif /* defined(__twohalf__CanvasManager__) */

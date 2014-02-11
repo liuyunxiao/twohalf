@@ -15,6 +15,8 @@ bool CanvasManager::initMgr()
     FrameManager::getSingletonPtr()->addToMainView("TopView");
     
     openModel("ogrehead.mesh");
+    
+    mCursorQuery = OgreFramework::getSingletonPtr()->m_pSceneMgr->createRayQuery(Ray());
     return true;
 }
 
@@ -31,4 +33,18 @@ bool CanvasManager::openModel(String name)
 	mpCurOpenNode->attachObject(mpCurOpenEnt);
     mpCurOpenNode->setScale(0.5, 0.5, 0.5);
     return true;
+}
+
+void CanvasManager::onClickModel(Vector2 pos)
+{
+    Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(pos.x, pos.y);
+    mCursorQuery->setRay(ray);
+    RaySceneQueryResult& result = mCursorQuery->execute();
+    
+    if (!result.empty())
+    {
+        // using the point of intersection, find the corresponding texel on our texture
+        Vector3 pt = ray.getPoint(result.back().distance);
+        //mBrushPos = (Vector2(pt.x, -pt.y) / mPlaneSize + Vector2(0.5, 0.5)) * TEXTURE_SIZE;
+    }
 }
