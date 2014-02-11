@@ -1,10 +1,8 @@
 #include "OgreFramework.h"
 #include "macUtils.h"
+#include "FrameManager.h"
+template<> OgreFramework* Singleton<OgreFramework>::msSingleton = 0;
 
-namespace Ogre
-{
-    template<> OgreFramework* Singleton<OgreFramework>::msSingleton = 0;
-};
 
 OgreFramework::OgreFramework()
 {
@@ -69,7 +67,6 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
 	m_pViewport->setCamera(m_pCamera);
     
 	unsigned long hWnd = 0;
-    OIS::ParamList paramList;
     m_pRenderWnd->getCustomAttribute("WINDOW", &hWnd);
     
 	String secName, typeName, archName;
@@ -103,6 +100,8 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
 	m_pTimer->reset();
     
 	m_pRenderWnd->setActive(true);
+    
+    FrameManager::getSingletonPtr()->addToMainView("TopView");
     
 	return true;
 }

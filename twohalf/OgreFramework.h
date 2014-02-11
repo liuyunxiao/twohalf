@@ -5,19 +5,6 @@
 
 //|||||||||||||||||||||||||||||||||||||||||||||||
 
-#include <Ogre.h>
-#include <OgreCamera.h>
-#include <OgreEntity.h>
-#include <OgreLogManager.h>
-#include <OgreOverlay.h>
-#include <OgreOverlayElement.h>
-#include <OgreOverlayManager.h>
-#include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreSceneManager.h>
-#include <OgreRenderWindow.h>
-#include <OgreConfigFile.h>
-using namespace Ogre;
 #ifdef OGRE_STATIC_LIB
 #  define OGRE_STATIC_GL
 #  if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
@@ -55,10 +42,6 @@ using namespace Ogre;
 #    endif
 #  endif
 #  include "OgreStaticPluginLoader.h"
-#endif
-
-#ifdef OGRE_IS_IOS
-#   include <OISMultiTouch.h>
 #endif
 
 

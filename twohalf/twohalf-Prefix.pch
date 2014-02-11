@@ -6,3 +6,5 @@
     #import <UIKit/UIKit.h>
     		
 #endif
+#include <Ogre.h>
+using namespace Ogre;
