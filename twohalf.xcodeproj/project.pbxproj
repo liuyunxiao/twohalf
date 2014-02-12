@@ -13,11 +13,12 @@
 		E41F06F918A9D6A600472A1D /* FrameManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F06F718A9D6A600472A1D /* FrameManager.mm */; };
 		E41F06FC18A9E84100472A1D /* ModelDisplay.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F06FB18A9E84100472A1D /* ModelDisplay.mm */; };
 		E41F06FE18A9E93200472A1D /* UIModelItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41F06FD18A9E93200472A1D /* UIModelItem.xib */; };
-		E41F070118A9EB7000472A1D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41F070018A9EB7000472A1D /* Default-568h@2x.png */; };
 		E41F070418A9ED3D00472A1D /* ModelList.plist in Resources */ = {isa = PBXBuildFile; fileRef = E41F070318A9ED3D00472A1D /* ModelList.plist */; };
 		E41F070718A9F04800472A1D /* CanvasManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E41F070518A9F04800472A1D /* CanvasManager.cpp */; };
 		E41F072918AA26FA00472A1D /* MainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F072818AA26FA00472A1D /* MainView.mm */; };
 		E41F072B18AA270200472A1D /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41F072A18AA270200472A1D /* MainView.xib */; };
+		E42F78A318AB1D260061515B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E42F78A218AB1D260061515B /* Default-568h@2x.png */; };
+		E42F78D818AB5EAD0061515B /* PickPictureCtrl.mm in Sources */ = {isa = PBXBuildFile; fileRef = E42F78D718AB5EAD0061515B /* PickPictureCtrl.mm */; };
 		E4F7A49418A8B1C500D85F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */; };
 		E4F7A49618A8B1C500D85F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49518A8B1C500D85F89 /* Foundation.framework */; };
 		E4F7A49818A8B1C500D85F89 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49718A8B1C500D85F89 /* OpenGLES.framework */; };
@@ -42,13 +43,15 @@
 		E41F06FA18A9E84100472A1D /* ModelDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelDisplay.h; sourceTree = "<group>"; };
 		E41F06FB18A9E84100472A1D /* ModelDisplay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ModelDisplay.mm; sourceTree = "<group>"; };
 		E41F06FD18A9E93200472A1D /* UIModelItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIModelItem.xib; sourceTree = "<group>"; };
-		E41F070018A9EB7000472A1D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E41F070318A9ED3D00472A1D /* ModelList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ModelList.plist; sourceTree = "<group>"; };
 		E41F070518A9F04800472A1D /* CanvasManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CanvasManager.cpp; sourceTree = "<group>"; };
 		E41F070618A9F04800472A1D /* CanvasManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasManager.h; sourceTree = "<group>"; };
 		E41F072718AA26FA00472A1D /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
 		E41F072818AA26FA00472A1D /* MainView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainView.mm; sourceTree = "<group>"; };
 		E41F072A18AA270200472A1D /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		E42F78A218AB1D260061515B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E42F78D618AB5EAD0061515B /* PickPictureCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickPictureCtrl.h; sourceTree = "<group>"; };
+		E42F78D718AB5EAD0061515B /* PickPictureCtrl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PickPictureCtrl.mm; sourceTree = "<group>"; };
 		E4F7A49018A8B1C500D85F89 /* twohalf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twohalf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4F7A49518A8B1C500D85F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +168,8 @@
 				E41F06FB18A9E84100472A1D /* ModelDisplay.mm */,
 				E41F06F418A9D61600472A1D /* TopView.mm */,
 				E41F06F518A9D61600472A1D /* TopView.h */,
+				E42F78D618AB5EAD0061515B /* PickPictureCtrl.h */,
+				E42F78D718AB5EAD0061515B /* PickPictureCtrl.mm */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -172,7 +177,7 @@
 		E41F06FF18A9EB6400472A1D /* res */ = {
 			isa = PBXGroup;
 			children = (
-				E41F070018A9EB7000472A1D /* Default-568h@2x.png */,
+				E42F78A218AB1D260061515B /* Default-568h@2x.png */,
 			);
 			path = res;
 			sourceTree = "<group>";
@@ -443,9 +448,9 @@
 				E41F06FE18A9E93200472A1D /* UIModelItem.xib in Resources */,
 				E41F06F318A9D5B600472A1D /* TopView.xib in Resources */,
 				E4F7A4A318A8B1C500D85F89 /* InfoPlist.strings in Resources */,
+				E42F78A318AB1D260061515B /* Default-568h@2x.png in Resources */,
 				E4F7A4F518A8B1C500D85F89 /* ogre.cfg in Resources */,
 				E41F06F118A9D50800472A1D /* ModelDisplay.xib in Resources */,
-				E41F070118A9EB7000472A1D /* Default-568h@2x.png in Resources */,
 				E41F070418A9ED3D00472A1D /* ModelList.plist in Resources */,
 				E4F7A4F918A8B1C500D85F89 /* resources.cfg in Resources */,
 				E4F7A4F718A8B1C500D85F89 /* plugins.cfg in Resources */,
@@ -482,6 +487,7 @@
 				E41F072918AA26FA00472A1D /* MainView.mm in Sources */,
 				E4F7A4A918A8B1C500D85F89 /* OgreDemoApp.cpp in Sources */,
 				E41F06F618A9D61600472A1D /* TopView.mm in Sources */,
+				E42F78D818AB5EAD0061515B /* PickPictureCtrl.mm in Sources */,
 				E41F06F918A9D6A600472A1D /* FrameManager.mm in Sources */,
 				E41F070718A9F04800472A1D /* CanvasManager.cpp in Sources */,
 			);

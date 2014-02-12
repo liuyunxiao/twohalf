@@ -9,12 +9,13 @@
 #import "TopView.h"
 #include "FrameManager.h"
 #include "CanvasManager.h"
+#import "PickPictureCtrl.h"
 @implementation TopView
 
 -(IBAction)onModelLib:(id)sender
 {
     [self UesrImageClicked];
-    FrameManager::getSingletonPtr()->addToMainView("ModelDisplay");
+    //FrameManager::getSingletonPtr()->addToMainView("ModelDisplay");
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -75,7 +76,9 @@
         imagePickerController.allowsEditing = YES;
         imagePickerController.sourceType = sourceType;
         
-        [self presentViewController:imagePickerController animated:YES completion:^{}];
+        PickPictureCtrl* picCtl = [[PickPictureCtrl alloc] init];
+        picCtl.view = self;
+        [picCtl presentViewController:imagePickerController animated:YES completion:^{}];
     }
 }
 
