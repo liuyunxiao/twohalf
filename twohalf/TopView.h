@@ -6,7 +6,7 @@
 //
 //
 
-@interface TopView : UIView
+@interface TopView : UIView<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
 }
 @end

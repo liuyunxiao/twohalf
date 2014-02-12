@@ -29,6 +29,8 @@ bool FrameManager::addToMainView(String frameName)
     
     UIView* pView = NULL;
     OgreFramework::getSingletonPtr()->m_pRenderWnd->getCustomAttribute("VIEW", &pView);
+    CGRect frame = pView.frame;
+    printf("%f , %f ,%f ,%f\n",v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
     if(pView)
         [pView addSubview:v];
     

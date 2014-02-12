@@ -39,7 +39,7 @@ bool CanvasManager::openModel(String name)
 
 void CanvasManager::onClickModel(Vector2 pos)
 {
-    printf("%f  %f",pos.x,pos.y);
+    printf("%f  %f\n",pos.x,pos.y);
     Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(pos.x, pos.y);
     mCursorQuery->setRay(ray);
     RaySceneQueryResult& result = mCursorQuery->execute();
@@ -52,6 +52,7 @@ void CanvasManager::onClickModel(Vector2 pos)
         MovableObject* ent = result[0].movable;
         if(ent)
         {
+            ent->getParentSceneNode()->showBoundingBox(!ent->getParentSceneNode()->getShowBoundingBox());
             printf("fjkldsj");
         }
         //mBrushPos = (Vector2(pt.x, -pt.y) / mPlaneSize + Vector2(0.5, 0.5)) * TEXTURE_SIZE;

@@ -42,6 +42,8 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
     
     m_pRoot = new Ogre::Root(pluginsPath, Ogre::macBundlePath() + "/ogre.cfg");
     
+    printf(Ogre::macBundlePath().c_str());
+    
 #ifdef OGRE_STATIC_LIB
     m_StaticPluginLoader.load();
 #endif
@@ -54,7 +56,7 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
 	m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 	
 	m_pCamera = m_pSceneMgr->createCamera("Camera");
-	m_pCamera->setPosition(Vector3(0, 60, 60));
+	m_pCamera->setPosition(Vector3(0, 0, 60));
 	m_pCamera->lookAt(Vector3(0, 0, 0));
 	m_pCamera->setNearClipDistance(1);
     

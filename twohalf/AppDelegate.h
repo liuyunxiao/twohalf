@@ -128,7 +128,8 @@
     if ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending)
         mDisplayLinkSupported = TRUE;
 #endif
-
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    printf("%f %f\n",screenSize.width,screenSize.height);
     [self go];
 }
 
