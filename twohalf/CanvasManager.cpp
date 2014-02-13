@@ -16,7 +16,8 @@ bool CanvasManager::initMgr()
     
     FrameManager::getSingletonPtr()->addToMainView("TopView");
     
-    openModel("ogrehead.mesh");
+    //openModel("ogrehead.mesh");
+    openModel("sphere.mesh");
     
     mCursorQuery = OgreFramework::getSingletonPtr()->m_pSceneMgr->createRayQuery(Ray());
     return true;
@@ -24,31 +25,26 @@ bool CanvasManager::initMgr()
 
 void CanvasManager::change(TexturePtr tex)
 {
-    for(int i = 1; i < mpCurOpenEnt->getNumSubEntities(); ++i)
+    static int matnum = 0;
+    String matNmae = "mat";
+    matNmae += StringConverter::toString(++matnum);
+    MaterialPtr mat = MaterialManager::getSingletonPtr()->create(matNmae, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    TextureUnitState* texUnit = mat->getTechnique(0)->getPass(0)->createTextureUnitState();
+    texUnit->setTexture(tex);
+    texUnit->setTextureCoordSet(0);
+    //texUnit->setTextureAddressingMode(TextureUnitState::TextureAddressingMode::TAM_MIRROR);
+    Pass* pass = mat->getTechnique(0)->getPass(0);
+    //pass->setDiffuse(0.7, 0.7, 0.7, 1.0);
+    //pass->setAmbient(0.1, 0.1, 0.1);
+    
+    mat->reload();
+    for(int i = 0; i < mpCurOpenEnt->getNumSubEntities(); ++i)
     {
         SubEntity* sub = mpCurOpenEnt->getSubEntity(i);
         if(!sub)
             continue;
         
-        MaterialPtr mat = sub->getMaterial();
-        
-        Technique* tec = mat->getTechnique(0);
-        
-        if(!tec )
-            continue;
-        
-        Pass* pas = tec->getPass(0);
-        if(!pas)
-            continue;
-        
-        
-        TextureUnitState* texUnit = pas->getTextureUnitState(0);
-        if(texUnit)
-        {
-            
-            texUnit->setTexture(tex );
-            sub->setMaterial(mat);
-        }
+        sub->setMaterialName(matNmae);
     }
     
 }
@@ -64,7 +60,8 @@ bool CanvasManager::openModel(String name)
     sPref += StringConverter::toString(nNum);
 	mpCurOpenNode = OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->createChildSceneNode(sPref);
 	mpCurOpenNode->attachObject(mpCurOpenEnt);
-    mpCurOpenNode->setScale(0.5, 0.5, 0.5);
+    mpCurOpenNode->setScale(0.1, 0.1, 0.1);
+    //mpCurOpenNode->yaw(Radian(Degree(180)));
     return true;
 }
 

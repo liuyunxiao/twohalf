@@ -81,7 +81,7 @@
         // 跳转到相机或相册页面
         UIImagePickerController *imagePickerController = [[NonRotatingUIImagePickerController alloc] init];
         imagePickerController.delegate = self;
-        imagePickerController.allowsEditing = YES;
+        imagePickerController.allowsEditing = NO;
         imagePickerController.sourceType = sourceType;
         UIWindow* pWin = NULL;
         OgreFramework::getSingletonPtr()->m_pRenderWnd->getCustomAttribute("WINDOW", &pWin);
@@ -104,14 +104,13 @@
     DataStreamPtr stream(OGRE_NEW MemoryDataStream((void*)imageData.bytes, imageData.length));
     Image img;
     img.load(stream,"png");
-    TexturePtr tex = TextureManager::getSingleton().loadImage( "sss",
-                                                              ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img, TEX_TYPE_2D );
+    TexturePtr tex = TextureManager::getSingleton().loadImage( "sss",ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img, TEX_TYPE_2D, 0, 1.0);
     
 //    MemoryDataStream* data = new MemoryDataStream((void*)imageData.bytes, imageData.length);
 //    DataStreamPtr dataptr(data);
 //    TexturePtr tex = TextureManager::getSingletonPtr()->loadRawData("ss", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, dataptr, image.size.width, image.size.height, PF_A8R8G8B8);
     Image imgsave;
-    tex->convertToImage(imgsave);
+    tex->convertToImage(imgsave,true);
     CanvasManager::getSingletonPtr()->change(tex);
     imgsave.save(Ogre::macBundlePath() + "/mm.png");
     //[HttpRequestManager uploadImage:compressedImage httpClient:self.httpClient delegate:self];

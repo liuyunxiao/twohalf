@@ -49,6 +49,8 @@
 		E41F072818AA26FA00472A1D /* MainView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainView.mm; sourceTree = "<group>"; };
 		E41F072A18AA270200472A1D /* MainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		E42F78A218AB1D260061515B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E4506DC118ACA011007332C4 /* BeachStones.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BeachStones.jpg; sourceTree = "<group>"; };
+		E4506DC318ACA8B4007332C4 /* sphere.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = sphere.mesh; sourceTree = "<group>"; };
 		E4F7A49018A8B1C500D85F89 /* twohalf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twohalf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4F7A49518A8B1C500D85F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -281,8 +283,8 @@
 		E4F7A4B118A8B1C500D85F89 /* materials */ = {
 			isa = PBXGroup;
 			children = (
-				E4F7A4B218A8B1C500D85F89 /* scripts */,
 				E4F7A4B518A8B1C500D85F89 /* textures */,
+				E4F7A4B218A8B1C500D85F89 /* scripts */,
 			);
 			path = materials;
 			sourceTree = "<group>";
@@ -299,6 +301,7 @@
 		E4F7A4B518A8B1C500D85F89 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				E4506DC118ACA011007332C4 /* BeachStones.jpg */,
 				E4F7A4B618A8B1C500D85F89 /* GreenSkin.jpg */,
 				E4F7A4B718A8B1C500D85F89 /* spheremap.png */,
 				E4F7A4B818A8B1C500D85F89 /* tusk.jpg */,
@@ -309,6 +312,7 @@
 		E4F7A4B918A8B1C500D85F89 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				E4506DC318ACA8B4007332C4 /* sphere.mesh */,
 				E4F7A4BA18A8B1C500D85F89 /* ogrehead.mesh */,
 			);
 			path = models;
