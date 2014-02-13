@@ -22,15 +22,11 @@ bool FrameManager::addToMainView(String frameName)
     NSArray *items = [[NSBundle mainBundle] loadNibNamed:name owner:nil options:nil];
     UIView* v = (UIView*)[items objectAtIndex:0];
     
-    if(!v)
-    {
-        return false;
-    }
-    
+    if(!v) return false;
+
     UIView* pView = NULL;
     OgreFramework::getSingletonPtr()->m_pRenderWnd->getCustomAttribute("VIEW", &pView);
-    CGRect frame = pView.frame;
-    printf("%f , %f ,%f ,%f\n",v.frame.origin.x,v.frame.origin.y,v.frame.size.width,v.frame.size.height);
+    
     if(pView)
         [pView addSubview:v];
     

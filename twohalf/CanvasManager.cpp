@@ -22,6 +22,37 @@ bool CanvasManager::initMgr()
     return true;
 }
 
+void CanvasManager::change(TexturePtr tex)
+{
+    for(int i = 1; i < mpCurOpenEnt->getNumSubEntities(); ++i)
+    {
+        SubEntity* sub = mpCurOpenEnt->getSubEntity(i);
+        if(!sub)
+            continue;
+        
+        MaterialPtr mat = sub->getMaterial();
+        
+        Technique* tec = mat->getTechnique(0);
+        
+        if(!tec )
+            continue;
+        
+        Pass* pas = tec->getPass(0);
+        if(!pas)
+            continue;
+        
+        
+        TextureUnitState* texUnit = pas->getTextureUnitState(0);
+        if(texUnit)
+        {
+            
+            texUnit->setTexture(tex );
+            sub->setMaterial(mat);
+        }
+    }
+    
+}
+
 bool CanvasManager::openModel(String name)
 {
     static int nNum = 0;
@@ -46,14 +77,12 @@ void CanvasManager::onClickModel(Vector2 pos)
     
     if (!result.empty())
     {
-        printf("fjkldsj111");
         // using the point of intersection, find the corresponding texel on our texture
         Vector3 pt = ray.getPoint(result.back().distance);
         MovableObject* ent = result[0].movable;
         if(ent)
         {
             ent->getParentSceneNode()->showBoundingBox(!ent->getParentSceneNode()->getShowBoundingBox());
-            printf("fjkldsj");
         }
         //mBrushPos = (Vector2(pt.x, -pt.y) / mPlaneSize + Vector2(0.5, 0.5)) * TEXTURE_SIZE;
     }

@@ -17,6 +17,8 @@ public:
     bool openModel(String name);
     
     void onClickModel(Vector2 pos);
+    
+    void change(TexturePtr tex);
 private:
     SceneNode*          mpCurOpenNode;
     Entity*             mpCurOpenEnt;

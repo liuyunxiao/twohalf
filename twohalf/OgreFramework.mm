@@ -42,8 +42,6 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
     
     m_pRoot = new Ogre::Root(pluginsPath, Ogre::macBundlePath() + "/ogre.cfg");
     
-    printf(Ogre::macBundlePath().c_str());
-    
 #ifdef OGRE_STATIC_LIB
     m_StaticPluginLoader.load();
 #endif

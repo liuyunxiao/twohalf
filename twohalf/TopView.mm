@@ -9,7 +9,15 @@
 #import "TopView.h"
 #include "FrameManager.h"
 #include "CanvasManager.h"
-#import "PickPictureCtrl.h"
+#include "OgreFramework.h"
+#include "macUtils.h"
+@implementation NonRotatingUIImagePickerController
+// Disable Landscape mode.
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscape;
+}
+@end
+
 @implementation TopView
 
 -(IBAction)onModelLib:(id)sender
@@ -71,14 +79,14 @@
             }
         }
         // 跳转到相机或相册页面
-        UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+        UIImagePickerController *imagePickerController = [[NonRotatingUIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         imagePickerController.allowsEditing = YES;
         imagePickerController.sourceType = sourceType;
-        
-        PickPictureCtrl* picCtl = [[PickPictureCtrl alloc] init];
-        picCtl.view = self;
-        [picCtl presentViewController:imagePickerController animated:YES completion:^{}];
+        UIWindow* pWin = NULL;
+        OgreFramework::getSingletonPtr()->m_pRenderWnd->getCustomAttribute("WINDOW", &pWin);
+    
+        [pWin.rootViewController presentViewController:imagePickerController animated:YES completion:^{}];
     }
 }
 
@@ -87,12 +95,25 @@
 {
     [picker dismissViewControllerAnimated:YES completion:^{}];
     
-    UIImage *image = [info UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     //userImageView.image = image;
     
-    NSData *imageData = UIImageJPEGRepresentation(image, 1);
-    UIImage *compressedImage = [UIImage imageWithData:imageData];
+    NSData *imageData = UIImagePNGRepresentation(image);
+    //UIImage *compressedImage = [UIImage imageWithData:imageData];
     
+    DataStreamPtr stream(OGRE_NEW MemoryDataStream((void*)imageData.bytes, imageData.length));
+    Image img;
+    img.load(stream,"png");
+    TexturePtr tex = TextureManager::getSingleton().loadImage( "sss",
+                                                              ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img, TEX_TYPE_2D );
+    
+//    MemoryDataStream* data = new MemoryDataStream((void*)imageData.bytes, imageData.length);
+//    DataStreamPtr dataptr(data);
+//    TexturePtr tex = TextureManager::getSingletonPtr()->loadRawData("ss", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, dataptr, image.size.width, image.size.height, PF_A8R8G8B8);
+    Image imgsave;
+    tex->convertToImage(imgsave);
+    CanvasManager::getSingletonPtr()->change(tex);
+    imgsave.save(Ogre::macBundlePath() + "/mm.png");
     //[HttpRequestManager uploadImage:compressedImage httpClient:self.httpClient delegate:self];
     
 }
