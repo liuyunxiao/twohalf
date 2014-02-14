@@ -64,6 +64,7 @@ public:
 					if (curTech->getSchemeName() == schemeName)
 					{
 						generatedTech = curTech;
+                        printf(originalMaterial->getName().c_str());
 						break;
 					}
 				}				

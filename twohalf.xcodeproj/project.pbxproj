@@ -18,6 +18,7 @@
 		E41F072918AA26FA00472A1D /* MainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E41F072818AA26FA00472A1D /* MainView.mm */; };
 		E41F072B18AA270200472A1D /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41F072A18AA270200472A1D /* MainView.xib */; };
 		E42F78A318AB1D260061515B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E42F78A218AB1D260061515B /* Default-568h@2x.png */; };
+		E4506DCA18ADFEB1007332C4 /* BeachStones.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4506DC118ACA011007332C4 /* BeachStones.jpg */; };
 		E4F7A49418A8B1C500D85F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */; };
 		E4F7A49618A8B1C500D85F89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49518A8B1C500D85F89 /* Foundation.framework */; };
 		E4F7A49818A8B1C500D85F89 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F7A49718A8B1C500D85F89 /* OpenGLES.framework */; };
@@ -444,6 +445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4506DCA18ADFEB1007332C4 /* BeachStones.jpg in Resources */,
 				E41F06FE18A9E93200472A1D /* UIModelItem.xib in Resources */,
 				E41F06F318A9D5B600472A1D /* TopView.xib in Resources */,
 				E4F7A4A318A8B1C500D85F89 /* InfoPlist.strings in Resources */,

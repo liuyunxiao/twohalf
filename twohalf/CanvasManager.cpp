@@ -16,8 +16,8 @@ bool CanvasManager::initMgr()
     
     FrameManager::getSingletonPtr()->addToMainView("TopView");
     
-    //openModel("ogrehead.mesh");
-    openModel("sphere.mesh");
+    openModel("ogrehead.mesh");
+    //openModel("sphere.mesh");
     
     mCursorQuery = OgreFramework::getSingletonPtr()->m_pSceneMgr->createRayQuery(Ray());
     return true;
@@ -31,22 +31,17 @@ void CanvasManager::change(TexturePtr tex)
     MaterialPtr mat = MaterialManager::getSingletonPtr()->create(matNmae, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     TextureUnitState* texUnit = mat->getTechnique(0)->getPass(0)->createTextureUnitState();
     texUnit->setTexture(tex);
-    texUnit->setTextureCoordSet(0);
-    //texUnit->setTextureAddressingMode(TextureUnitState::TextureAddressingMode::TAM_MIRROR);
     Pass* pass = mat->getTechnique(0)->getPass(0);
-    //pass->setDiffuse(0.7, 0.7, 0.7, 1.0);
-    //pass->setAmbient(0.1, 0.1, 0.1);
+    pass->setDiffuse(1.0, 0.7, 0.7, 1.0);
+    pass->setAmbient(0.1, 0.1, 0.1);
     
-    mat->reload();
     for(int i = 0; i < mpCurOpenEnt->getNumSubEntities(); ++i)
     {
         SubEntity* sub = mpCurOpenEnt->getSubEntity(i);
         if(!sub)
             continue;
-        
-        sub->setMaterialName(matNmae);
+        sub->setMaterial(mat);
     }
-    
 }
 
 bool CanvasManager::openModel(String name)
@@ -60,7 +55,7 @@ bool CanvasManager::openModel(String name)
     sPref += StringConverter::toString(nNum);
 	mpCurOpenNode = OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->createChildSceneNode(sPref);
 	mpCurOpenNode->attachObject(mpCurOpenEnt);
-    mpCurOpenNode->setScale(0.1, 0.1, 0.1);
+    mpCurOpenNode->setScale(0.5, 0.5, 0.5);
     //mpCurOpenNode->yaw(Radian(Degree(180)));
     return true;
 }
