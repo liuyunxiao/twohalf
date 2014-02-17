@@ -10,6 +10,11 @@
 #include "FrameManager.h"
 #include "OgreFramework.h"
 template<> CanvasManager* Singleton<CanvasManager>::msSingleton = 0;
+
+CanvasManager::CanvasManager():mpEntBackground(0)
+{
+    
+}
 bool CanvasManager::initMgr()
 {
     FrameManager::getSingletonPtr()->addToMainView("MainView");
@@ -20,6 +25,13 @@ bool CanvasManager::initMgr()
     //openModel("sphere.mesh");
     
     mCursorQuery = OgreFramework::getSingletonPtr()->m_pSceneMgr->createRayQuery(Ray());
+    
+    mpEntBackground = new Rectangle2D(true);
+    mpEntBackground->setRenderQueueGroup(RENDER_QUEUE_BACKGROUND);
+    mpEntBackground->setCorners(-1, 1, 1, -1);
+    mpNodeBackground = OgreFramework::getSingleton().m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
+    mpNodeBackground->attachObject(mpEntBackground);
+    mpNodeBackground->setVisible(false);
     return true;
 }
 
@@ -27,21 +39,18 @@ void CanvasManager::change(TexturePtr tex)
 {
     static int matnum = 0;
     String matNmae = "mat";
+    
     matNmae += StringConverter::toString(++matnum);
     MaterialPtr mat = MaterialManager::getSingletonPtr()->create(matNmae, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     TextureUnitState* texUnit = mat->getTechnique(0)->getPass(0)->createTextureUnitState();
     texUnit->setTexture(tex);
+    float xDif = (tex->getWidth()/2.0) / (568/2)/2;
+    float yDif = (tex->getHeight()/2.0) / (320/2)/2;
+    mpEntBackground->setCorners(-xDif, yDif, xDif, -yDif);
     Pass* pass = mat->getTechnique(0)->getPass(0);
-    pass->setDiffuse(1.0, 0.7, 0.7, 1.0);
-    pass->setAmbient(0.1, 0.1, 0.1);
-    
-    for(int i = 0; i < mpCurOpenEnt->getNumSubEntities(); ++i)
-    {
-        SubEntity* sub = mpCurOpenEnt->getSubEntity(i);
-        if(!sub)
-            continue;
-        sub->setMaterial(mat);
-    }
+    pass->setDepthWriteEnabled(false);
+    mpEntBackground->setMaterial(matNmae);
+    mpNodeBackground->setVisible(true);
 }
 
 bool CanvasManager::openModel(String name)

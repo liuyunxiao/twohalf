@@ -52,6 +52,7 @@
 		E42F78A218AB1D260061515B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E4506DC118ACA011007332C4 /* BeachStones.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BeachStones.jpg; sourceTree = "<group>"; };
 		E4506DC318ACA8B4007332C4 /* sphere.mesh */ = {isa = PBXFileReference; lastKnownFileType = file; path = sphere.mesh; sourceTree = "<group>"; };
+		E47A439F18B1AE3F00B93619 /* 1111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1111.png; sourceTree = "<group>"; };
 		E4F7A49018A8B1C500D85F89 /* twohalf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twohalf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F7A49318A8B1C500D85F89 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4F7A49518A8B1C500D85F89 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -302,6 +303,7 @@
 		E4F7A4B518A8B1C500D85F89 /* textures */ = {
 			isa = PBXGroup;
 			children = (
+				E47A439F18B1AE3F00B93619 /* 1111.png */,
 				E4506DC118ACA011007332C4 /* BeachStones.jpg */,
 				E4F7A4B618A8B1C500D85F89 /* GreenSkin.jpg */,
 				E4F7A4B718A8B1C500D85F89 /* spheremap.png */,

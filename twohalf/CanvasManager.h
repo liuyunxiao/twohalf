@@ -12,6 +12,8 @@
 class CanvasManager : public Singleton<CanvasManager>
 {
 public:
+    CanvasManager();
+    
     bool initMgr();
     
     bool openModel(String name);
@@ -23,5 +25,8 @@ private:
     SceneNode*          mpCurOpenNode;
     Entity*             mpCurOpenEnt;
     RaySceneQuery*      mCursorQuery;
+    
+    SceneNode*          mpNodeBackground;
+    Rectangle2D*        mpEntBackground;
 };
 #endif /* defined(__twohalf__CanvasManager__) */

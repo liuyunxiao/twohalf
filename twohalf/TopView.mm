@@ -115,7 +115,7 @@
     
     NSData *imageData = UIImagePNGRepresentation(image);
     //UIImage *compressedImage = [UIImage imageWithData:imageData];
-    
+    NSString* path = [info objectForKey:UIImagePickerControllerReferenceURL];
     static int texnum = 0;
     String texName = "tex";
     texName += StringConverter::toString(++texnum);
@@ -123,12 +123,13 @@
     DataStreamPtr stream(OGRE_NEW MemoryDataStream((void*)imageData.bytes, imageData.length));
     Image img;
     img.load(stream,"png");
+    //img.flipAroundX();
     img.save(Ogre::macBundlePath() + "/media/materials/textures/" + texName + ".png");
     
     TexturePtr tex = TextureManager::getSingleton().load(texName+".png", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     
-    //Image imgsave;
-    //tex->convertToImage(imgsave,false);
+    //TexturePtr tex = TextureManager::getSingleton().loadImage(texName+".png", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img);
+
     CanvasManager::getSingletonPtr()->change(tex);
 }
 @end
