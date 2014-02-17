@@ -20,13 +20,16 @@ public:
     
     void onClickModel(Vector2 pos);
     
-    void change(TexturePtr tex);
+    void changeBackgroud(TexturePtr tex);
+    
+    void updateAni(double delta);
 private:
     SceneNode*          mpCurOpenNode;
-    Entity*             mpCurOpenEnt;
     RaySceneQuery*      mCursorQuery;
     
     SceneNode*          mpNodeBackground;
     Rectangle2D*        mpEntBackground;
+    
+    AnimationState*     mTestAni;
 };
 #endif /* defined(__twohalf__CanvasManager__) */

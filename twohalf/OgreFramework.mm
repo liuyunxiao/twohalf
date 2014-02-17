@@ -1,5 +1,6 @@
 #include "OgreFramework.h"
 #include "macUtils.h"
+#include "CanvasManager.h"
 template<> OgreFramework* Singleton<OgreFramework>::msSingleton = 0;
 
 
@@ -54,7 +55,7 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
 	m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 	
 	m_pCamera = m_pSceneMgr->createCamera("Camera");
-	m_pCamera->setPosition(Vector3(0, 0, 60));
+	m_pCamera->setPosition(Vector3(0, 0, 20));
 	m_pCamera->lookAt(Vector3(0, 0, 0));
 	m_pCamera->setNearClipDistance(1);
     
@@ -120,4 +121,6 @@ void OgreFramework::updateOgre(double timeSinceLastFrame)
     m_pSceneMgr->setSkyBoxEnabled(true);
 #endif
 	m_FrameEvent.timeSinceLastFrame = timeSinceLastFrame;
+    CanvasManager::getSingletonPtr()->updateAni(timeSinceLastFrame);
+    printf("lastFPS%f-----------\n",m_pRenderWnd->getStatistics().lastFPS);
 }

@@ -11,4 +11,5 @@
 @interface TopView : UIView<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
 }
+@property(nonatomic,assign) float lastScale;
 @end

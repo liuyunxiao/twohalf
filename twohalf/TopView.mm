@@ -20,25 +20,40 @@
 
 @implementation TopView
 
+-(void)awakeFromNib
+{
+    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(scaleView:)];
+    [self addGestureRecognizer:pinch];
+    [pinch release];
+    
+}
+
 -(IBAction)onModelLib:(id)sender
 {
-//    UIImage* image = [UIImage imageNamed:@"bg_common.png"];
-//    NSData *imageData = UIImagePNGRepresentation(image);
-//    //UIImage *compressedImage = [UIImage imageWithData:imageData];
-//    
-//    DataStreamPtr stream(OGRE_NEW MemoryDataStream((void*)imageData.bytes, imageData.length));
-//    Image img;
-//    img.load(stream,"png");
-//    static int texnum = 0;
-//    String texName = "tex";
-//    texName += StringConverter::toString(++texnum);
-//    TexturePtr tex = TextureManager::getSingleton().loadImage( texName,ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img, TEX_TYPE_2D, MIP_DEFAULT);
-//    Image imgsave;
-//    tex->convertToImage(imgsave,false);
-//    CanvasManager::getSingletonPtr()->change(tex);
-//    imgsave.save(Ogre::macBundlePath() + "/mm.png");
+    FrameManager::getSingletonPtr()->addToMainView("ModelDisplay");
+}
+
+// 缩放
+
+-(void)scaleView:(id)sender {
+    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
+        _lastScale = 1.0;
+    }
+    if([(UIPinchGestureRecognizer*)sender scale] > _lastScale)
+    {
+        OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,-0.3));
+    }
+    else
+    {
+        OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,0.3));
+    }
+    _lastScale = [(UIPinchGestureRecognizer*)sender scale];
+}
+
+
+-(IBAction)onOpenPic:(id)sender
+{
     [self UesrImageClicked];
-    //FrameManager::getSingletonPtr()->addToMainView("ModelDisplay");
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -130,6 +145,6 @@
     
     //TexturePtr tex = TextureManager::getSingleton().loadImage(texName+".png", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img);
 
-    CanvasManager::getSingletonPtr()->change(tex);
+    CanvasManager::getSingletonPtr()->changeBackgroud(tex);
 }
 @end

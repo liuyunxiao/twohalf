@@ -12,13 +12,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JaN-ai-HIQ">
-                    <rect key="frame" x="261" y="262" width="46" height="30"/>
+                    <rect key="frame" x="197" y="270" width="91" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="照片">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onOpenPic:" destination="1" eventType="touchUpInside" id="ZzY-Ju-oEi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="T5N-Vx-iXT">
+                    <rect key="frame" x="303" y="270" width="92" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="模型库">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onModelLib:" destination="1" eventType="touchUpInside" id="WRH-Im-mXI"/>
+                        <action selector="onModelLib:" destination="1" eventType="touchUpInside" id="wyj-Pe-LIY"/>
                     </connections>
                 </button>
             </subviews>

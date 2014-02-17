@@ -21,7 +21,7 @@ bool CanvasManager::initMgr()
     
     FrameManager::getSingletonPtr()->addToMainView("TopView");
     
-    openModel("ogrehead.mesh");
+    openModel("Sinbad.mesh");
     //openModel("sphere.mesh");
     
     mCursorQuery = OgreFramework::getSingletonPtr()->m_pSceneMgr->createRayQuery(Ray());
@@ -35,7 +35,7 @@ bool CanvasManager::initMgr()
     return true;
 }
 
-void CanvasManager::change(TexturePtr tex)
+void CanvasManager::changeBackgroud(TexturePtr tex)
 {
     static int matnum = 0;
     String matNmae = "mat";
@@ -53,38 +53,55 @@ void CanvasManager::change(TexturePtr tex)
     mpNodeBackground->setVisible(true);
 }
 
+void CanvasManager::updateAni(double delta)
+{
+    if(mTestAni)
+    {
+        mTestAni->addTime(delta);
+    }
+}
+
 bool CanvasManager::openModel(String name)
 {
     static int nNum = 0;
     ++nNum;
     String sPref = "Ent";
     sPref += StringConverter::toString(nNum);
-    mpCurOpenEnt = OgreFramework::getSingletonPtr()->m_pSceneMgr->createEntity(sPref, name);
+    Entity* ent = OgreFramework::getSingletonPtr()->m_pSceneMgr->createEntity(sPref, name);
+    AnimationState* aniState = ent->getAnimationState("RunBase");
+    if(aniState)
+    {
+        aniState->setLoop(true);
+        aniState->setEnabled(true);
+        mTestAni = aniState;
+    }
+    
     sPref = "Node";
     sPref += StringConverter::toString(nNum);
 	mpCurOpenNode = OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->createChildSceneNode(sPref);
-	mpCurOpenNode->attachObject(mpCurOpenEnt);
-    mpCurOpenNode->setScale(0.5, 0.5, 0.5);
-    //mpCurOpenNode->yaw(Radian(Degree(180)));
+	mpCurOpenNode->attachObject(ent);
     return true;
 }
 
 void CanvasManager::onClickModel(Vector2 pos)
 {
-    printf("%f  %f\n",pos.x,pos.y);
     Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(pos.x, pos.y);
     mCursorQuery->setRay(ray);
     RaySceneQueryResult& result = mCursorQuery->execute();
     
     if (!result.empty())
     {
-        // using the point of intersection, find the corresponding texel on our texture
         Vector3 pt = ray.getPoint(result.back().distance);
         MovableObject* ent = result[0].movable;
         if(ent)
         {
-            ent->getParentSceneNode()->showBoundingBox(!ent->getParentSceneNode()->getShowBoundingBox());
+            ent->getParentSceneNode()->showBoundingBox(true);
+            mpCurOpenNode = ent->getParentSceneNode();
         }
-        //mBrushPos = (Vector2(pt.x, -pt.y) / mPlaneSize + Vector2(0.5, 0.5)) * TEXTURE_SIZE;
+    }
+    else
+    {
+        if(mpCurOpenNode)
+            mpCurOpenNode->showBoundingBox(false);
     }
 }

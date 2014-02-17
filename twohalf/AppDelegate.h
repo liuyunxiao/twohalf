@@ -96,7 +96,7 @@
         mLastFrameTime = -[mDate timeIntervalSinceNow];
         
         mDisplayLink = [NSClassFromString(@"CADisplayLink") displayLinkWithTarget:self selector:@selector(renderOneFrame:)];
-        [mDisplayLink setFrameInterval:mLastFrameTime];
+        [mDisplayLink setFrameInterval:1];
         [mDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     }
     else
@@ -170,10 +170,11 @@
 		if(OgreFramework::getSingletonPtr()->m_pRenderWnd->isActive())
 		{
 			mStartTime = OgreFramework::getSingletonPtr()->m_pTimer->getMillisecondsCPU();
-            
 			OgreFramework::getSingletonPtr()->updateOgre(mLastFrameTime);
 			OgreFramework::getSingletonPtr()->m_pRoot->renderOneFrame();
-            
+            static int mm = 0;
+            if(mLastFrameTime > 0)
+                printf("%ld-----------%d\n",OgreFramework::getSingletonPtr()->m_pTimer->getMillisecondsCPU(),++mm);
 			mLastFrameTime = OgreFramework::getSingletonPtr()->m_pTimer->getMillisecondsCPU() - mStartTime;
 		}
     }
