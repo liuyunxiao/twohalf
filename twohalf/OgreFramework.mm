@@ -100,9 +100,7 @@ bool OgreFramework::initOgre(Ogre::String wndTitle)
 	m_pTimer->reset();
     
 	m_pRenderWnd->setActive(true);
-    
-    
-    
+
 	return true;
 }
 
@@ -122,5 +120,4 @@ void OgreFramework::updateOgre(double timeSinceLastFrame)
 #endif
 	m_FrameEvent.timeSinceLastFrame = timeSinceLastFrame;
     CanvasManager::getSingletonPtr()->updateAni(timeSinceLastFrame);
-    printf("lastFPS%f-----------\n",m_pRenderWnd->getStatistics().lastFPS);
 }

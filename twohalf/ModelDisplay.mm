@@ -8,12 +8,23 @@
 
 #import "ModelDisplay.h"
 #include "FrameManager.h"
-
+#include "macUtils.h"
+#include "CanvasManager.h"
 @implementation UIModelItem
 
 -(void)awakeFromNib
 {
     
+}
+
+-(void)onUpdate:(id)data
+{
+    mTexName.text = data;
+}
+
+-(IBAction)onItemClick:(id)sender
+{
+    CanvasManager::getSingletonPtr()->openModel([mTexName.text cStringUsingEncoding:NSUTF8StringEncoding]);
 }
 @end
 
@@ -21,7 +32,21 @@
 
 -(void)awakeFromNib
 {
+    NSFileManager* fileMgr = [NSFileManager defaultManager];
+    String path = Ogre::macBundlePath() + "/media/models";
+    NSArray* files = [fileMgr subpathsAtPath:[NSString stringWithUTF8String:path.c_str()]];
     
+    int nIndex = 0;
+    for(NSString* fileName in files)
+    {
+        NSArray *items = [[NSBundle mainBundle] loadNibNamed:@"UIModelItem" owner:nil options:nil];
+        UIModelItem* v = (UIModelItem*)[items objectAtIndex:0];
+        [mScrollModels addSubview:v];
+        CGRect rec = v.frame;
+        v.frame = CGRectMake(rec.size.width*nIndex, 0, rec.size.width, rec.size.height);
+        [v onUpdate:fileName];
+        ++nIndex;
+    }
 }
 
 -(IBAction)onClose:(id)sender

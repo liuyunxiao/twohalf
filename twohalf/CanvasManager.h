@@ -23,6 +23,8 @@ public:
     void changeBackgroud(TexturePtr tex);
     
     void updateAni(double delta);
+    
+    void onPanGesture(Vector2 screenPos);
 private:
     SceneNode*          mpCurOpenNode;
     RaySceneQuery*      mCursorQuery;

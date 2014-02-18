@@ -22,10 +22,28 @@
 
 -(void)awakeFromNib
 {
-    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(scaleView:)];
+    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipePinch:)];
     [self addGestureRecognizer:pinch];
     [pinch release];
+
+    UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
+    [self addGestureRecognizer:pan];
+    [pan release];
     
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
+    [self addGestureRecognizer:tap];
+    [tap release];
+}
+
+- (void) handlePan:(UIPanGestureRecognizer*) recognizer
+{
+    CGPoint pos = [recognizer locationInView:self];
+    CanvasManager::getSingletonPtr()->onPanGesture(Vector2(pos.x/568.0f,pos.y/320.0f));
+}
+- (void) handleTap:(UITapGestureRecognizer*) recognizer
+{
+    CGPoint pos = [recognizer locationInView:self];
+    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/568.0f,pos.y/320.0f));
 }
 
 -(IBAction)onModelLib:(id)sender
@@ -34,8 +52,7 @@
 }
 
 // 缩放
-
--(void)scaleView:(id)sender {
+-(void)handleSwipePinch:(id)sender {
     if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
         _lastScale = 1.0;
     }
@@ -54,14 +71,6 @@
 -(IBAction)onOpenPic:(id)sender
 {
     [self UesrImageClicked];
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch* touch = [touches anyObject];
-    CGPoint pos = [touch locationInView:self];
-    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/568.0f,pos.y/320.0f));
-    return [super touchesBegan:touches withEvent:event];
 }
 
 - (void)UesrImageClicked

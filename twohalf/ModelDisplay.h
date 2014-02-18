@@ -10,7 +10,7 @@
 {
     IBOutlet UILabel*       mTexName;
 }
--(void)onUpdate;
+-(void)onUpdate:(id)data;
 @end
 
 @interface ModelDisplay : UIView

@@ -11,7 +11,7 @@
 #include "OgreFramework.h"
 template<> CanvasManager* Singleton<CanvasManager>::msSingleton = 0;
 
-CanvasManager::CanvasManager():mpEntBackground(0)
+CanvasManager::CanvasManager():mpEntBackground(0),mpCurOpenNode(0)
 {
     
 }
@@ -63,24 +63,49 @@ void CanvasManager::updateAni(double delta)
 
 bool CanvasManager::openModel(String name)
 {
+    if(mpCurOpenNode)
+        mpCurOpenNode->showBoundingBox(false);
     static int nNum = 0;
     ++nNum;
     String sPref = "Ent";
     sPref += StringConverter::toString(nNum);
     Entity* ent = OgreFramework::getSingletonPtr()->m_pSceneMgr->createEntity(sPref, name);
-    AnimationState* aniState = ent->getAnimationState("RunBase");
-    if(aniState)
+    if(ent->getAllAnimationStates())
     {
-        aniState->setLoop(true);
-        aniState->setEnabled(true);
-        mTestAni = aniState;
+        AnimationState* aniState = ent->getAnimationState("RunBase");
+        if(aniState)
+        {
+            aniState->setLoop(true);
+            aniState->setEnabled(true);
+            mTestAni = aniState;
+        }
     }
+    
     
     sPref = "Node";
     sPref += StringConverter::toString(nNum);
 	mpCurOpenNode = OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->createChildSceneNode(sPref);
 	mpCurOpenNode->attachObject(ent);
+    const AxisAlignedBox& box = ent->getBoundingBox();
+    Real scal = 10/box.getSize().y;
+    mpCurOpenNode->setScale(scal,scal,scal);
+    mpCurOpenNode->showBoundingBox(true);
     return true;
+}
+
+void CanvasManager::onPanGesture(Vector2 screenPos)
+{
+    if(mpCurOpenNode)
+    {
+        Vector3 pos = mpCurOpenNode->getPosition();
+        Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(screenPos.x, screenPos.y);
+        std::pair<bool, Real> res = ray.intersects(Plane(Vector3(Vector3::UNIT_Z), pos.z));
+        if(res.first)
+        {
+            mpCurOpenNode->setPosition(ray*res.second);
+        }
+        
+    }
 }
 
 void CanvasManager::onClickModel(Vector2 pos)
@@ -95,8 +120,12 @@ void CanvasManager::onClickModel(Vector2 pos)
         MovableObject* ent = result[0].movable;
         if(ent)
         {
-            ent->getParentSceneNode()->showBoundingBox(true);
+            if(mpCurOpenNode)
+            {
+                mpCurOpenNode->showBoundingBox(false);
+            }
             mpCurOpenNode = ent->getParentSceneNode();
+            mpCurOpenNode->showBoundingBox(true);
         }
     }
     else
