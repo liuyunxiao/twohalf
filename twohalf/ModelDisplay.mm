@@ -43,10 +43,17 @@
         UIModelItem* v = (UIModelItem*)[items objectAtIndex:0];
         [mScrollModels addSubview:v];
         CGRect rec = v.frame;
-        v.frame = CGRectMake(rec.size.width*nIndex, 0, rec.size.width, rec.size.height);
+        v.frame = CGRectMake((rec.size.width+10)*nIndex, 0, rec.size.width, rec.size.height);
         [v onUpdate:fileName];
         ++nIndex;
     }
+    
+    NSArray *items = [[NSBundle mainBundle] loadNibNamed:@"UIModelItem" owner:nil options:nil];
+    UIModelItem* v = (UIModelItem*)[items objectAtIndex:0];
+    [mScrollModels addSubview:v];
+    CGRect rec = v.frame;
+    v.frame = CGRectMake((rec.size.width+10)*nIndex, 0, rec.size.width, rec.size.height);
+    [v onUpdate:@"Sinbad.mesh"];
 }
 
 -(IBAction)onClose:(id)sender

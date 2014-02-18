@@ -46,6 +46,29 @@ void CanvasManager::changeBackgroud(TexturePtr tex)
     texUnit->setTexture(tex);
     float xDif = (tex->getWidth()/2.0) / (568/2)/2;
     float yDif = (tex->getHeight()/2.0) / (320/2)/2;
+    if(xDif > 1.0 && yDif > 1.0)
+    {
+        if(xDif > yDif)
+        {
+            yDif *= 1.0/xDif;
+            xDif = 1.0;
+        }
+        else
+        {
+            xDif *= 1.0/yDif;
+            yDif = 1.0;
+        }
+    }
+    else if(xDif > 1.0)
+    {
+        yDif *= 1.0/xDif;
+        xDif = 1.0;
+    }
+    else if(yDif > 1.0)
+    {
+        xDif *= 1.0/yDif;
+        yDif = 1.0;
+    }
     mpEntBackground->setCorners(-xDif, yDif, xDif, -yDif);
     Pass* pass = mat->getTechnique(0)->getPass(0);
     pass->setDepthWriteEnabled(false);
