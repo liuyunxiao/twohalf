@@ -25,6 +25,7 @@
 -(IBAction)onItemClick:(id)sender
 {
     CanvasManager::getSingletonPtr()->openModel([mTexName.text cStringUsingEncoding:NSUTF8StringEncoding]);
+    FrameManager::getSingletonPtr()->closeView("ModelDisplay");
 }
 @end
 
@@ -58,7 +59,7 @@
 
 -(IBAction)onClose:(id)sender
 {
-    [self removeFromSuperview];
+    FrameManager::getSingletonPtr()->closeView("ModelDisplay");
 }
 
 @end

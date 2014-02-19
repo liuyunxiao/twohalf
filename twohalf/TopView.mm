@@ -11,18 +11,19 @@
 #include "CanvasManager.h"
 #include "OgreFramework.h"
 #include "macUtils.h"
+#include "OgreBitwise.h"
 @implementation NonRotatingUIImagePickerController
 // Disable Landscape mode.
-- (NSUInteger)supportedInterfaceOrientations{
-    return UIInterfaceOrientationMaskLandscape;
-}
+//- (NSUInteger)supportedInterfaceOrientations{
+//    return UIInterfaceOrientationMaskLandscape;
+//}
 @end
 
 @implementation TopView
 
 -(void)awakeFromNib
 {
-    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipePinch:)];
+    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinch:)];
     [self addGestureRecognizer:pinch];
     [pinch release];
 
@@ -38,12 +39,12 @@
 - (void) handlePan:(UIPanGestureRecognizer*) recognizer
 {
     CGPoint pos = [recognizer locationInView:self];
-    CanvasManager::getSingletonPtr()->onPanGesture(Vector2(pos.x/568.0f,pos.y/320.0f));
+    CanvasManager::getSingletonPtr()->onPanGesture(Vector2(pos.x/320.0f,pos.y/568.0f));
 }
 - (void) handleTap:(UITapGestureRecognizer*) recognizer
 {
     CGPoint pos = [recognizer locationInView:self];
-    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/568.0f,pos.y/320.0f));
+    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/320.0f,pos.y/568.0f));
 }
 
 -(IBAction)onModelLib:(id)sender
@@ -52,17 +53,17 @@
 }
 
 // 缩放
--(void)handleSwipePinch:(id)sender {
+-(void)handlePinch:(id)sender {
     if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
         _lastScale = 1.0;
     }
     if([(UIPinchGestureRecognizer*)sender scale] > _lastScale)
     {
-        OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,-0.3));
+        CanvasManager::getSingletonPtr()->onPinchGesture(-0.3);
     }
     else
     {
-        OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,0.3));
+        CanvasManager::getSingletonPtr()->onPinchGesture(0.3);
     }
     _lastScale = [(UIPinchGestureRecognizer*)sender scale];
 }
@@ -71,6 +72,12 @@
 -(IBAction)onOpenPic:(id)sender
 {
     [self UesrImageClicked];
+}
+
+-(IBAction)onSave:(id)sender
+{
+    UIImage* image = nil;
+    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
 }
 
 - (void)UesrImageClicked
@@ -135,10 +142,61 @@
     [picker dismissViewControllerAnimated:YES completion:^{}];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    //userImageView.image = image;
     
-    NSData *imageData = UIImagePNGRepresentation(image);
-    //UIImage *compressedImage = [UIImage imageWithData:imageData];
+    int scale = [[UIScreen mainScreen] scale];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    printf("screenSize %f %f\n",screenSize.width,screenSize.height);
+    float xDif = (image.size.width/scale)/(screenSize.width);
+    float yDif = (image.size.height/scale)/(screenSize.height);
+    bool bNeedResize = true;
+    if(xDif > 1.0 && yDif > 1.0)
+    {
+        if(xDif > yDif)
+        {
+            yDif = 1.0/xDif;
+            xDif = 1.0/xDif;
+        }
+        else
+        {
+            xDif = 1.0/yDif;
+            yDif = 1.0/yDif;
+        }
+    }
+    else if(xDif > 1.0)
+    {
+        yDif = 1.0/xDif;
+        xDif = 1.0/xDif;
+    }
+    else if(yDif > 1.0)
+    {
+        xDif = 1.0/yDif;
+        yDif = 1.0/yDif;
+    }
+    else
+    {
+        xDif = 1.0;
+        yDif = 1.0;
+        bNeedResize = false;
+    }
+    
+    NSData *imageData = nil;
+    int nNewWidth = image.size.width*xDif;
+    int nNewHeight = image.size.height*yDif;
+    printf("nNewWidth %d nNewHeight %d\n",nNewWidth,nNewHeight);
+    if(bNeedResize)
+    {
+        UIImage* subImage = nil;
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(nNewWidth, nNewHeight), NO, scale);
+        [image drawInRect:CGRectMake(0, 0, nNewWidth, nNewHeight)];
+        subImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        imageData = UIImageJPEGRepresentation(subImage,1.0);
+    }
+    else
+    {
+        imageData = UIImageJPEGRepresentation(image,1.0);
+    }
+
     NSString* path = [info objectForKey:UIImagePickerControllerReferenceURL];
     static int texnum = 0;
     String texName = "tex";
@@ -146,14 +204,45 @@
     
     DataStreamPtr stream(OGRE_NEW MemoryDataStream((void*)imageData.bytes, imageData.length));
     Image img;
-    img.load(stream,"png");
+    img.load(stream,"jpg");
     //img.flipAroundX();
-    img.save(Ogre::macBundlePath() + "/media/materials/textures/" + texName + ".png");
+    img.save(Ogre::macBundlePath() + "/media/materials/textures/" + texName + ".jpg");
     
-    TexturePtr tex = TextureManager::getSingleton().load(texName+".png", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+    TexturePtr tex = TextureManager::getSingleton().load(texName+".jpg", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     
-    //TexturePtr tex = TextureManager::getSingleton().loadImage(texName+".png", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img);
+    //TexturePtr tex = TextureManager::getSingletonPtr()->createManual(texName+"fff", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TextureType::TEX_TYPE_2D,Bitwise::firstPO2From(img.getWidth()) , Bitwise::firstPO2From(img.getHeight()), img.getDepth(), MIP_DEFAULT, img.getFormat());
+//    Image img1;
+//    img1.load(texName+".jpg",ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+//    tex->loadImage(img1);
+    
+    //TexturePtr tex = TextureManager::getSingleton().loadImage(texName+".jpg", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, img);
 
-    CanvasManager::getSingletonPtr()->changeBackgroud(tex);
+    xDif = (nNewWidth/scale)/(screenSize.width);
+    yDif = (nNewHeight/scale)/(screenSize.height);
+    if(xDif > 1.0 && yDif > 1.0)
+    {
+        if(xDif > yDif)
+        {
+            yDif *= 1.0/xDif;
+            xDif = 1.0;
+        }
+        else
+        {
+            xDif *= 1.0/yDif;
+            yDif = 1.0;
+        }
+    }
+    else if(xDif > 1.0)
+    {
+        yDif *= 1.0/xDif;
+        xDif = 1.0;
+    }
+    else if(yDif > 1.0)
+    {
+        xDif *= 1.0/yDif;
+        yDif = 1.0;
+    }
+
+    CanvasManager::getSingletonPtr()->changeBackgroud(tex,xDif,yDif);
 }
 @end

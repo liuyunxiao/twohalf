@@ -20,11 +20,12 @@ public:
     
     void onClickModel(Vector2 pos);
     
-    void changeBackgroud(TexturePtr tex);
+    void changeBackgroud(TexturePtr tex, float fWidth, float fHeight);
     
     void updateAni(double delta);
     
     void onPanGesture(Vector2 screenPos);
+    void onPinchGesture(float fScale);
 private:
     SceneNode*          mpCurOpenNode;
     RaySceneQuery*      mCursorQuery;

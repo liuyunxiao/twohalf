@@ -35,7 +35,7 @@ bool CanvasManager::initMgr()
     return true;
 }
 
-void CanvasManager::changeBackgroud(TexturePtr tex)
+void CanvasManager::changeBackgroud(TexturePtr tex, float fWidth, float fHeight)
 {
     static int matnum = 0;
     String matNmae = "mat";
@@ -44,32 +44,8 @@ void CanvasManager::changeBackgroud(TexturePtr tex)
     MaterialPtr mat = MaterialManager::getSingletonPtr()->create(matNmae, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
     TextureUnitState* texUnit = mat->getTechnique(0)->getPass(0)->createTextureUnitState();
     texUnit->setTexture(tex);
-    float xDif = (tex->getWidth()/2.0) / (568/2)/2;
-    float yDif = (tex->getHeight()/2.0) / (320/2)/2;
-    if(xDif > 1.0 && yDif > 1.0)
-    {
-        if(xDif > yDif)
-        {
-            yDif *= 1.0/xDif;
-            xDif = 1.0;
-        }
-        else
-        {
-            xDif *= 1.0/yDif;
-            yDif = 1.0;
-        }
-    }
-    else if(xDif > 1.0)
-    {
-        yDif *= 1.0/xDif;
-        xDif = 1.0;
-    }
-    else if(yDif > 1.0)
-    {
-        xDif *= 1.0/yDif;
-        yDif = 1.0;
-    }
-    mpEntBackground->setCorners(-xDif, yDif, xDif, -yDif);
+    
+    mpEntBackground->setCorners(-fWidth, fHeight, fWidth, -fHeight);
     Pass* pass = mat->getTechnique(0)->getPass(0);
     pass->setDepthWriteEnabled(false);
     mpEntBackground->setMaterial(matNmae);
@@ -88,6 +64,7 @@ bool CanvasManager::openModel(String name)
 {
     if(mpCurOpenNode)
         mpCurOpenNode->showBoundingBox(false);
+    
     static int nNum = 0;
     ++nNum;
     String sPref = "Ent";
@@ -104,7 +81,6 @@ bool CanvasManager::openModel(String name)
         }
     }
     
-    
     sPref = "Node";
     sPref += StringConverter::toString(nNum);
 	mpCurOpenNode = OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->createChildSceneNode(sPref);
@@ -116,18 +92,31 @@ bool CanvasManager::openModel(String name)
     return true;
 }
 
+void CanvasManager::onPinchGesture(float fScale)
+{
+    if(!mpCurOpenNode)
+    {
+        OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,fScale<0?-0.3:0.3));
+    }
+    else
+    {
+        Vector3 srcScale = mpCurOpenNode->getScale();
+        float fCof = fScale<0?0.005:-0.005;
+        mpCurOpenNode->setScale(Vector3(srcScale.x+fCof, srcScale.y+fCof, srcScale.z+fCof));
+    }
+}
+
 void CanvasManager::onPanGesture(Vector2 screenPos)
 {
-    if(mpCurOpenNode)
+    if(!mpCurOpenNode)
+        return;
+    
+    Vector3 pos = mpCurOpenNode->getPosition();
+    Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(screenPos.x, screenPos.y);
+    std::pair<bool, Real> res = ray.intersects(Plane(Vector3(Vector3::UNIT_Z), pos.z));
+    if(res.first)
     {
-        Vector3 pos = mpCurOpenNode->getPosition();
-        Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(screenPos.x, screenPos.y);
-        std::pair<bool, Real> res = ray.intersects(Plane(Vector3(Vector3::UNIT_Z), pos.z));
-        if(res.first)
-        {
-            mpCurOpenNode->setPosition(ray*res.second);
-        }
-        
+        mpCurOpenNode->setPosition(ray*res.second);
     }
 }
 
@@ -154,6 +143,9 @@ void CanvasManager::onClickModel(Vector2 pos)
     else
     {
         if(mpCurOpenNode)
+        {
             mpCurOpenNode->showBoundingBox(false);
+            mpCurOpenNode = NULL;
+        }
     }
 }
