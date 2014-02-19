@@ -39,12 +39,14 @@
 - (void) handlePan:(UIPanGestureRecognizer*) recognizer
 {
     CGPoint pos = [recognizer locationInView:self];
-    CanvasManager::getSingletonPtr()->onPanGesture(Vector2(pos.x/320.0f,pos.y/568.0f));
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CanvasManager::getSingletonPtr()->onPanGesture(Vector2(pos.x/screenSize.width,pos.y/screenSize.height));
 }
 - (void) handleTap:(UITapGestureRecognizer*) recognizer
 {
     CGPoint pos = [recognizer locationInView:self];
-    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/320.0f,pos.y/568.0f));
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/screenSize.width,pos.y/screenSize.height));
 }
 
 -(IBAction)onModelLib:(id)sender
@@ -145,7 +147,6 @@
     
     int scale = [[UIScreen mainScreen] scale];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    printf("screenSize %f %f\n",screenSize.width,screenSize.height);
     float xDif = (image.size.width/scale)/(screenSize.width);
     float yDif = (image.size.height/scale)/(screenSize.height);
     bool bNeedResize = true;
