@@ -23,53 +23,80 @@
 
 -(void)awakeFromNib
 {
-    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinch:)];
-    [self addGestureRecognizer:pinch];
-    [pinch release];
-
-    UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
-    [self addGestureRecognizer:pan];
-    [pan release];
+    m_nTagSelModel = CanvasManager::getSingletonPtr()->openModel("ogrehead.mesh");
     
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
-    [self addGestureRecognizer:tap];
-    [tap release];
+    [self onBtnMove:nil];
 }
 
-- (void) handlePan:(UIPanGestureRecognizer*) recognizer
+- (void) handlePanMove:(UIPanGestureRecognizer*) recognizer
 {
-    CGPoint pos = [recognizer locationInView:self];
-    CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CanvasManager::getSingletonPtr()->onPanGesture(Vector2(pos.x/screenSize.width,pos.y/screenSize.height));
+    if(m_nTagSelModel)
+    {
+        CGPoint pos = [recognizer locationInView:self];
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        CanvasManager::getSingletonPtr()->onMoveModel(Vector2(pos.x/screenSize.width,pos.y/screenSize.height));
+    }
 }
+
+- (void) handlePanRotate:(UIPanGestureRecognizer*) recognizer
+{
+    if(m_nTagSelModel)
+    {
+        if([recognizer state] == UIGestureRecognizerStateBegan) {
+            m_pointLastRotate = [recognizer locationInView:self];
+        }
+        
+        CGPoint pos = [recognizer locationInView:self];
+        CGPoint nDif;
+        nDif.x = m_pointLastRotate.x-pos.x;
+        nDif.y = m_pointLastRotate.y-pos.y;
+        CanvasManager::getSingletonPtr()->onRotateModel(Vector2(-nDif.x/80.0, -nDif.y/80.0));
+        m_pointLastRotate = [recognizer locationInView:self];
+    }
+    
+}
+
 - (void) handleTap:(UITapGestureRecognizer*) recognizer
 {
     CGPoint pos = [recognizer locationInView:self];
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
-    CanvasManager::getSingletonPtr()->onClickModel(Vector2(pos.x/screenSize.width,pos.y/screenSize.height));
+    int nTagSelModel = CanvasManager::getSingletonPtr()->onClickScreen(Vector2(pos.x/screenSize.width,pos.y/screenSize.height));
+    if(m_nTagSelModel == nTagSelModel)
+    {
+        m_nTagSelModel = -1;
+    }
+    else
+    {
+        m_nTagSelModel = nTagSelModel;
+    }
+}
+
+// 缩放
+-(void)handlePinch:(UIPinchGestureRecognizer*)recognizer {
+    if([recognizer state] == UIGestureRecognizerStateBegan) {
+        m_fLastScale = 1.0;
+    }
+    if([recognizer scale] > m_fLastScale)
+    {
+        if(m_nTagSelModel)
+            CanvasManager::getSingletonPtr()->onScaleModel(-0.3);
+        else
+            CanvasManager::getSingletonPtr()->onMoveCamera(0.3);
+    }
+    else
+    {
+        if(m_nTagSelModel)
+            CanvasManager::getSingletonPtr()->onScaleModel(0.3);
+        else
+            CanvasManager::getSingletonPtr()->onMoveCamera(-0.3);
+    }
+    m_fLastScale = [recognizer scale];
 }
 
 -(IBAction)onModelLib:(id)sender
 {
     FrameManager::getSingletonPtr()->addToMainView("ModelDisplay");
 }
-
-// 缩放
--(void)handlePinch:(id)sender {
-    if([(UIPinchGestureRecognizer*)sender state] == UIGestureRecognizerStateBegan) {
-        _lastScale = 1.0;
-    }
-    if([(UIPinchGestureRecognizer*)sender scale] > _lastScale)
-    {
-        CanvasManager::getSingletonPtr()->onPinchGesture(-0.3);
-    }
-    else
-    {
-        CanvasManager::getSingletonPtr()->onPinchGesture(0.3);
-    }
-    _lastScale = [(UIPinchGestureRecognizer*)sender scale];
-}
-
 
 -(IBAction)onOpenPic:(id)sender
 {
@@ -78,8 +105,96 @@
 
 -(IBAction)onSave:(id)sender
 {
-    UIImage* image = nil;
-    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    //CanvasManager::getSingletonPtr()->printScreen();
+//    int left, top, width, height;
+//    OgreFramework::getSingletonPtr()->m_pViewport->getActualDimensions(left, top, width, height);
+//    
+//    Ogre::PixelFormat format = Ogre::PF_A8B8G8R8;
+//    int outWidth = width;
+//    int outHeight = height;
+//    int outBytesPerPixel = Ogre::PixelUtil::getNumElemBytes(format);
+//    
+//    printf("Left %d, Top %d, Width: %d, Height: %d\n", left, top, width, height);
+//    
+//    unsigned char *data = new unsigned char [outWidth*outHeight*outBytesPerPixel];
+//    Ogre::Box extents(left, top, left + width, top + height);
+//    Ogre::PixelBox pb(extents, format, data);
+//    OgreFramework::getSingletonPtr()->m_pRenderWnd->copyContentsToMemory(pb);
+//    printf("PixelBox: %d, %d, w: %d, h: %d\n", pb.left, pb.right, pb.getWidth(), pb.getHeight());
+//    
+//    Image().loadDynamicImage(data, width, height, 1, format, false, 1, 0).save(Ogre::macBundlePath() + "/media/ddddd.jpg");
+//    delete [] data;
+    OgreFramework::getSingletonPtr()->m_pRenderWnd->writeContentsToFile(Ogre::macBundlePath() + "/media/ddddd.jpg");
+//    NSData* nsData = [NSData dataWithBytes:pb.data length:pb.getConsecutiveSize()];
+//    UIImage* image = [UIImage imageWithData:nsData];
+//    
+//    UIImageWriteToSavedPhotosAlbum(image,nil,nil,nil);
+    
+//    UIView* pMainView;
+//    OgreFramework::getSingletonPtr()->m_pRenderWnd->getCustomAttribute("VIEW", &pMainView);
+//    //FrameManager::getSingleton().hideAllUIView(true);
+//    UIGraphicsBeginImageContext(pMainView.frame.size);
+//    [pMainView.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    //FrameManager::getSingleton().hideAllUIView(false);
+//    UIImageWriteToSavedPhotosAlbum(viewImage,nil,nil,nil);
+}
+
+-(IBAction)onBtnSel:(id)sender
+{
+    [self removeCurGesture];
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleTap:)];
+    [self addGestureRecognizer:tap];
+    m_gestureCur = tap;
+    [tap release];
+}
+
+-(IBAction)onBtnRemove:(id)sender
+{
+    if(m_nTagSelModel)
+    {
+        [self removeCurGesture];
+        CanvasManager::getSingletonPtr()->removeCurSel();
+        m_nTagSelModel = -1;
+    }
+    
+}
+
+-(IBAction)onBtnScale:(id)sender
+{
+    [self removeCurGesture];
+    UIPinchGestureRecognizer* pinch = [[UIPinchGestureRecognizer alloc]initWithTarget:self action:@selector(handlePinch:)];
+    [self addGestureRecognizer:pinch];
+    m_gestureCur = pinch;
+    [pinch release];
+}
+
+-(IBAction)onBtnMove:(id)sender
+{
+    [self removeCurGesture];
+    UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanMove:)];
+    [self addGestureRecognizer:pan];
+    m_gestureCur = pan;
+    [pan release];
+}
+
+-(IBAction)onBtnRotate:(id)sender
+{
+    [self removeCurGesture];
+    UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePanRotate:)];
+    [self addGestureRecognizer:pan];
+    m_gestureCur = pan;
+    [pan release];
+}
+
+-(void)removeCurGesture
+{
+    if(m_gestureCur != nil)
+    {
+        [self removeGestureRecognizer:m_gestureCur];
+        m_gestureCur = nil;
+    }
 }
 
 - (void)UesrImageClicked

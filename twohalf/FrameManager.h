@@ -16,6 +16,7 @@ public:
     bool addToMainView(String frameName);
     void closeView(String frameName);
     
+    void hideAllUIView(bool hide);
     typedef map<String,int>::type MapViewNameTag;
     typedef map<String,int>::type::iterator MapViewNameTagItor;
 private:

@@ -16,17 +16,25 @@ public:
     
     bool initMgr();
     
-    bool openModel(String name);
-    
-    void onClickModel(Vector2 pos);
-    
+    int openModel(String name);
     void changeBackgroud(TexturePtr tex, float fWidth, float fHeight);
-    
     void updateAni(double delta);
     
-    void onPanGesture(Vector2 screenPos);
-    void onPinchGesture(float fScale);
+    void cancelCurSel();
+    void removeCurSel();
+    void printScreen();
+    void onMoveModel(Vector2 screenPos);
+    void onScaleModel(float fScale);
+    void onRotateModel(Vector2 screenDis);
+    int  onClickScreen(Vector2 screenPos);
+    void onMoveCamera(float fDis);
+    
+    typedef map<String,int>::type MapNodeNameTag;
+    typedef map<String,int>::type::iterator MapNodeNameTagItor;
+    
 private:
+    MapNodeNameTag      mMapNodeNameTag;
+    int                 mNodeTagIndex;
     SceneNode*          mpCurOpenNode;
     RaySceneQuery*      mCursorQuery;
     

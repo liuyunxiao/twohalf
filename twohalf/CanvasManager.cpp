@@ -9,20 +9,19 @@
 #include "CanvasManager.h"
 #include "FrameManager.h"
 #include "OgreFramework.h"
+#include "macUtils.h"
 template<> CanvasManager* Singleton<CanvasManager>::msSingleton = 0;
 
-CanvasManager::CanvasManager():mpEntBackground(0),mpCurOpenNode(0)
+CanvasManager::CanvasManager():mpEntBackground(0),mpCurOpenNode(0),mTestAni(0)
 {
     
 }
 bool CanvasManager::initMgr()
 {
     FrameManager::getSingletonPtr()->addToMainView("MainView");
-    
     FrameManager::getSingletonPtr()->addToMainView("TopView");
     
-    openModel("Sinbad.mesh");
-    //openModel("sphere.mesh");
+    
     
     mCursorQuery = OgreFramework::getSingletonPtr()->m_pSceneMgr->createRayQuery(Ray());
     
@@ -32,6 +31,8 @@ bool CanvasManager::initMgr()
     mpNodeBackground = OgreFramework::getSingleton().m_pSceneMgr->getRootSceneNode()->createChildSceneNode();
     mpNodeBackground->attachObject(mpEntBackground);
     mpNodeBackground->setVisible(false);
+    
+    mNodeTagIndex = 0;
     return true;
 }
 
@@ -60,7 +61,7 @@ void CanvasManager::updateAni(double delta)
     }
 }
 
-bool CanvasManager::openModel(String name)
+int CanvasManager::openModel(String name)
 {
     if(mpCurOpenNode)
         mpCurOpenNode->showBoundingBox(false);
@@ -70,16 +71,16 @@ bool CanvasManager::openModel(String name)
     String sPref = "Ent";
     sPref += StringConverter::toString(nNum);
     Entity* ent = OgreFramework::getSingletonPtr()->m_pSceneMgr->createEntity(sPref, name);
-    if(ent->getAllAnimationStates())
-    {
-        AnimationState* aniState = ent->getAnimationState("RunBase");
-        if(aniState)
-        {
-            aniState->setLoop(true);
-            aniState->setEnabled(true);
-            mTestAni = aniState;
-        }
-    }
+//    if(ent->getAllAnimationStates())
+//    {
+//        AnimationState* aniState = ent->getAnimationState("RunBase");
+//        if(aniState)
+//        {
+//            aniState->setLoop(true);
+//            aniState->setEnabled(true);
+//            mTestAni = aniState;
+//        }
+//    }
     
     sPref = "Node";
     sPref += StringConverter::toString(nNum);
@@ -89,24 +90,27 @@ bool CanvasManager::openModel(String name)
     Real scal = 10/box.getSize().y;
     mpCurOpenNode->setScale(scal,scal,scal);
     mpCurOpenNode->showBoundingBox(true);
-    return true;
+    
+    mMapNodeNameTag[sPref] = ++mNodeTagIndex;
+    return mNodeTagIndex;
 }
 
-void CanvasManager::onPinchGesture(float fScale)
+void CanvasManager::onScaleModel(float fScale)
 {
     if(!mpCurOpenNode)
-    {
-        OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,fScale<0?-0.3:0.3));
-    }
-    else
-    {
-        Vector3 srcScale = mpCurOpenNode->getScale();
-        float fCof = fScale<0?0.005:-0.005;
-        mpCurOpenNode->setScale(Vector3(srcScale.x+fCof, srcScale.y+fCof, srcScale.z+fCof));
-    }
+        return;
+    
+    Vector3 srcScale = mpCurOpenNode->getScale();
+    float fCof = fScale<0?0.005:-0.005;
+    mpCurOpenNode->setScale(Vector3(srcScale.x+fCof, srcScale.y+fCof, srcScale.z+fCof));
 }
 
-void CanvasManager::onPanGesture(Vector2 screenPos)
+void CanvasManager::printScreen()
+{
+    
+}
+
+void CanvasManager::onMoveModel(Vector2 screenPos)
 {
     if(!mpCurOpenNode)
         return;
@@ -120,32 +124,75 @@ void CanvasManager::onPanGesture(Vector2 screenPos)
     }
 }
 
-void CanvasManager::onClickModel(Vector2 pos)
+void CanvasManager::onRotateModel(Vector2 screenDis)
 {
-    Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(pos.x, pos.y);
+    if(!mpCurOpenNode)
+        return;
+    
+    mpCurOpenNode->yaw(Radian(screenDis.x));
+    //mpCurOpenNode->pitch(Radian(screenDis.y));
+    //mpCurOpenNode->rotate(Vector3::UNIT_X, Radian(screenDis.y));
+    //mpCurOpenNode->rotate(Vector3::UNIT_Y, Radian(screenDis.x));
+    
+    
+}
+
+void CanvasManager::onMoveCamera(float fDis)
+{
+    OgreFramework::getSingletonPtr()->m_pCamera->move(Vector3(0.0,0.0,fDis<0?-0.3:0.3));
+}
+
+void CanvasManager::cancelCurSel()
+{
+    if(mpCurOpenNode)
+    {
+        mpCurOpenNode->showBoundingBox(false);
+        mpCurOpenNode = NULL;
+    }
+}
+
+void CanvasManager::removeCurSel()
+{
+    if(mpCurOpenNode)
+    {
+        OgreFramework::getSingletonPtr()->m_pSceneMgr->getRootSceneNode()->removeChild(mpCurOpenNode);
+        cancelCurSel();
+    }
+}
+
+int CanvasManager::onClickScreen(Vector2 screenPos)
+{
+    Ray ray = OgreFramework::getSingletonPtr()->m_pCamera->getCameraToViewportRay(screenPos.x, screenPos.y);
     mCursorQuery->setRay(ray);
     RaySceneQueryResult& result = mCursorQuery->execute();
+    if (result.empty())
+        return -1;
     
-    if (!result.empty())
+    int nSelModelIndex = -1;
+    Vector3 pt = ray.getPoint(result.back().distance);
+    MovableObject* ent = result[0].movable;
+    if(ent)
     {
-        Vector3 pt = ray.getPoint(result.back().distance);
-        MovableObject* ent = result[0].movable;
-        if(ent)
+        if(!mpCurOpenNode)
         {
-            if(mpCurOpenNode)
-            {
-                mpCurOpenNode->showBoundingBox(false);
-            }
             mpCurOpenNode = ent->getParentSceneNode();
             mpCurOpenNode->showBoundingBox(true);
+            MapNodeNameTagItor itor = mMapNodeNameTag.find(mpCurOpenNode->getName());
+            if(itor != mMapNodeNameTag.end())
+            {
+                nSelModelIndex = itor->second;
+            }
         }
-    }
-    else
-    {
-        if(mpCurOpenNode)
+        else if(mpCurOpenNode == ent->getParentSceneNode())
         {
-            mpCurOpenNode->showBoundingBox(false);
-            mpCurOpenNode = NULL;
+            MapNodeNameTagItor itor = mMapNodeNameTag.find(mpCurOpenNode->getName());
+            if(itor != mMapNodeNameTag.end())
+            {
+                nSelModelIndex = itor->second;
+            }
+            cancelCurSel();
         }
     }
+
+    return nSelModelIndex;
 }

@@ -49,6 +49,23 @@ bool FrameManager::addToMainView(String frameName)
     return true;
 }
 
+void FrameManager::hideAllUIView(bool hide)
+{
+    UIView* pView = NULL;
+    OGRE_MAINVIEW(pView);
+    if(!pView) return;
+    
+    UIView* baseView = [pView viewWithTag:FRAME_BASEVIEW_TAG];
+    if(hide)
+    {
+        baseView.hidden = YES;
+    }
+    else
+    {
+        baseView.hidden = NO;
+    }
+}
+
 void FrameManager::closeView(String frameName)
 {
     UIView* pView = NULL;
